@@ -276,3 +276,34 @@ strong{color:var(--text)}
   .sticky,.topbar{display:none !important;}
   body{background:#fff !important;color:#000 !important;}
 }
+
+/* Logo */
+.brand__logo{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  flex:0 0 auto;
+  display:block;
+}
+
+/* Circle logo */
+.brand__logo--circle{
+  border-radius:999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  padding:2px;
+}
+
+/* Square logo */
+.brand__logo--square{
+  border-radius:8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  padding:2px;
+}
+
+/* Footer smaller */
+.brand--small .brand__logo{
+  width:16px;
+  height:16px;
+}
