@@ -1,37 +1,35 @@
-// ✅ Change only these 2 values
-const PHONE = "212772649507";     // digits only (no +)
+// Change only these
+const PHONE = "212772649507";     // digits only, no +
 const INSTAGRAM = "plutonshopma"; // handle without @
 
 const WA = (msg) => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
 const IG = `https://instagram.com/${INSTAGRAM}`;
 
-const MSG_TEST = "Bonjour, je veux le TEST gratuit 24h. Mon appareil est : ";
-const MSG_COPY = "Bonjour, je veux le TEST gratuit 24h.";
+const MSG_TEST = "Bonjour, je veux le TEST 24h ✅ Mon appareil est : ";
+const MSG_COPY = "Bonjour, je veux le TEST 24h ✅";
 
-// Year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Top buttons
+// Links
 document.getElementById("igTop").href = IG;
 document.getElementById("igSticky").href = IG;
 
-document.getElementById("waTop").href = WA(MSG_TEST);
-document.getElementById("waHero").href = WA(MSG_TEST);
-document.getElementById("waCard").href = WA(MSG_TEST);
-document.getElementById("waBottom").href = WA(MSG_TEST);
-document.getElementById("waSticky").href = WA(MSG_TEST);
+["waTop","waHero","waCard","waBottom","waSticky"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.href = WA(MSG_TEST);
+});
 
-// Offer buttons
+// Offers
 document.querySelectorAll(".offerBtn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     const plan = btn.dataset.plan || "";
-    const msg = `Bonjour, je veux ${plan}. Test gratuit 24h si possible. Mon appareil est : `;
+    const msg = `Bonjour, je veux ${plan}. Test 24h si possible ✅ Mon appareil est : `;
     window.location.href = WA(msg);
   });
 });
 
-// Copy message
+// Copy button
 document.getElementById("copyBtn").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(MSG_COPY);
