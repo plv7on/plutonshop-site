@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Pluton Shop — IPTV Premium</title>
+  <title>Pluton Shop — Accès Premium</title>
   <meta name="description" content="Accès Premium : Sports • Films • Séries. Test gratuit 24h. Activation rapide." />
   <meta name="theme-color" content="#070909" />
   <link rel="stylesheet" href="styles.css" />
@@ -11,12 +11,12 @@
 
 <body>
   <main>
-    <!-- HERO (minimal, clean, no clichés) -->
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero" id="top">
       <div class="wrap hero__grid">
         <div class="hero__copy">
           <p class="eyebrow">Test gratuit 24h • Activation rapide • Support</p>
-          <h1 class="h1">IPTV Premium</h1>
+          <h1 class="h1">Accès Premium</h1>
           <p class="sub">Sports • Films • Séries</p>
 
           <p class="lead">
@@ -24,8 +24,24 @@
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary btn--lg" id="waHero" href="#" rel="noopener">Demander un test</a>
+            <!-- WA: TEST -->
+            <a class="btn btn--primary btn--lg"
+               id="waHero"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              Demander un test
+            </a>
+
+            <!-- Scroll -->
             <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
+
+            <!-- IG -->
+            <a class="btn btn--ghost btn--lg"
+               id="igHero"
+               href="https://instagram.com/plutonshopma"
+               rel="noopener">
+              Instagram
+            </a>
           </div>
 
           <div class="meta">
@@ -35,7 +51,7 @@
           </div>
         </div>
 
-        <!-- Right panel: one clean block, no bento -->
+        <!-- Right panel -->
         <aside class="hero__panel">
           <div class="panel">
             <div class="panel__head">
@@ -53,7 +69,14 @@
             </p>
 
             <div class="panel__actions">
-              <a class="btn btn--primary btn--full" id="waPanel" href="#" rel="noopener">TEST 24H</a>
+              <a class="btn btn--primary btn--full"
+                 id="waPanel"
+                 href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+                 rel="noopener">
+                TEST 24H
+              </a>
+
+              <!-- Copier message (nécessite JS, mais c'est OK s'il ne marche pas) -->
               <button class="btn btn--ghost btn--full" id="copyBtn" type="button">Copier le message</button>
             </div>
 
@@ -76,21 +99,33 @@
             <h3 class="h3">1 mois</h3>
             <div class="price">39 <span>DH</span></div>
             <p class="muted">Idéal pour commencer</p>
-            <a class="btn btn--ghost btn--full offerBtn" data-plan="1 mois - 39 DH" href="#">Choisir</a>
+            <a class="btn btn--ghost btn--full"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%201%20mois%20-%2039%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              Choisir
+            </a>
           </article>
 
           <article class="offer">
             <h3 class="h3">3 mois</h3>
             <div class="price">99 <span>DH</span></div>
             <p class="muted">Meilleur compromis</p>
-            <a class="btn btn--ghost btn--full offerBtn" data-plan="3 mois - 99 DH" href="#">Choisir</a>
+            <a class="btn btn--ghost btn--full"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%203%20mois%20-%2099%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              Choisir
+            </a>
           </article>
 
           <article class="offer">
             <h3 class="h3">6 mois</h3>
             <div class="price">149 <span>DH</span></div>
             <p class="muted">Pour être tranquille</p>
-            <a class="btn btn--ghost btn--full offerBtn" data-plan="6 mois - 149 DH" href="#">Choisir</a>
+            <a class="btn btn--ghost btn--full"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%206%20mois%20-%20149%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              Choisir
+            </a>
           </article>
 
           <article class="offer offer--best" aria-label="Offre top">
@@ -98,7 +133,11 @@
             <h3 class="h3">12 mois</h3>
             <div class="price">249 <span>DH</span></div>
             <p class="muted">Meilleure valeur</p>
-            <a class="btn btn--primary btn--full offerBtn" data-plan="12 mois - 249 DH" href="#">Choisir</a>
+            <a class="btn btn--primary btn--full"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%2012%20mois%20-%20249%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              Choisir
+            </a>
           </article>
         </div>
 
@@ -168,7 +207,12 @@
             <div class="cta__t">Prêt à tester ?</div>
             <div class="muted">Envoyez “TEST 24H” sur WhatsApp.</div>
           </div>
-          <a class="btn btn--primary btn--lg" id="waBottom" href="#" rel="noopener">WhatsApp</a>
+          <a class="btn btn--primary btn--lg"
+             id="waBottom"
+             href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+             rel="noopener">
+            WhatsApp
+          </a>
         </div>
       </div>
     </section>
@@ -176,16 +220,38 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <div class="footer__left">
-          <div class="muted">© <span id="year"></span> Pluton Shop</div>
+          <div class="muted">© <span id="year">2026</span> Pluton Shop</div>
         </div>
         <div class="footer__links">
           <a href="#offres">Offres</a>
           <a href="#faq">FAQ</a>
+          <a href="https://instagram.com/plutonshopma" rel="noopener">Instagram</a>
         </div>
       </div>
     </footer>
   </main>
 
-  <script src="script.js?v=10"></script>
+  <!-- Script optionnel: copier message + année auto -->
+  <script>
+    // Year
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Copy message (safe)
+    const copyBtn = document.getElementById("copyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const msg = "Bonjour, je veux le TEST 24h ✅";
+        try {
+          await navigator.clipboard.writeText(msg);
+          const old = copyBtn.textContent;
+          copyBtn.textContent = "Copié ✅";
+          setTimeout(() => (copyBtn.textContent = old), 1400);
+        } catch {
+          alert(msg);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
