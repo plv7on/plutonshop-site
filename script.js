@@ -1,35 +1,28 @@
-// ✅ CONFIG (change only these)
-const PHONE = "212772649507";          // WhatsApp (digits only, no +)
-const INSTAGRAM = "plutonshopma";      // IG handle (sans @)
+// ✅ Change only these 2 values
+const PHONE = "212772649507";     // digits only (no +)
+const INSTAGRAM = "plutonshopma"; // handle without @
 
-// Messages
-const MSG_BASE = "Bonjour, je souhaite un test gratuit 24h. Mon appareil est : ";
-const MSG_SHORT = "Bonjour, je veux un test gratuit 24h.";
-
-// Build links
 const WA = (msg) => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
 const IG = `https://instagram.com/${INSTAGRAM}`;
 
-// Set year
+const MSG_TEST = "Bonjour, je veux le TEST gratuit 24h. Mon appareil est : ";
+const MSG_COPY = "Bonjour, je veux le TEST gratuit 24h.";
+
+// Year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Hook CTAs
-const setHref = (id, url) => {
-  const el = document.getElementById(id);
-  if (el) el.href = url;
-};
+// Top buttons
+document.getElementById("igTop").href = IG;
+document.getElementById("igSticky").href = IG;
 
-setHref("ctaTopIG", IG);
-setHref("stickyIG", IG);
-
-setHref("ctaTopWA", WA(MSG_BASE));
-setHref("ctaHeroWA", WA(MSG_BASE));
-setHref("ctaCardWA", WA(MSG_BASE));
-setHref("ctaBottomWA", WA(MSG_BASE));
-setHref("stickyWA", WA(MSG_BASE));
+document.getElementById("waTop").href = WA(MSG_TEST);
+document.getElementById("waHero").href = WA(MSG_TEST);
+document.getElementById("waCard").href = WA(MSG_TEST);
+document.getElementById("waBottom").href = WA(MSG_TEST);
+document.getElementById("waSticky").href = WA(MSG_TEST);
 
 // Offer buttons
-document.querySelectorAll(".offerCta").forEach((btn) => {
+document.querySelectorAll(".offerBtn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     const plan = btn.dataset.plan || "";
@@ -38,17 +31,14 @@ document.querySelectorAll(".offerCta").forEach((btn) => {
   });
 });
 
-// Copy message button
-const copyBtn = document.getElementById("copyMsgBtn");
-if (copyBtn) {
-  copyBtn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(MSG_SHORT);
-      copyBtn.textContent = "Message copié ✅";
-      setTimeout(() => (copyBtn.textContent = "Copier le message"), 1600);
-    } catch {
-      // fallback
-      alert(MSG_SHORT);
-    }
-  });
-}
+// Copy message
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(MSG_COPY);
+    const b = document.getElementById("copyBtn");
+    b.textContent = "Copié ✅";
+    setTimeout(() => (b.textContent = "Copier le message"), 1400);
+  } catch {
+    alert(MSG_COPY);
+  }
+});
