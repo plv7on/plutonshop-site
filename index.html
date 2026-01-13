@@ -4,131 +4,313 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pluton Shop — Accès Premium</title>
-  <meta name="description" content="Accès Premium — Sports • Films • Séries. Test gratuit 24h. Activation rapide." />
+  <meta name="description" content="Accès Premium : Sports • Films • Séries. Test gratuit 24h. Activation rapide. Support." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pluton Shop — Accès Premium" />
+  <meta property="og:description" content="Sports • Films • Séries • Test gratuit 24h • Activation rapide" />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- Top glow -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
   <header class="nav">
-    <div class="brand">
-      <div class="logo">PLUTON<span>SHOP</span></div>
-    </div>
-    <nav class="links">
+    <a class="brand" href="#top" aria-label="Pluton Shop">
+      <span class="brand__word">PLUTON</span>
+      <span class="brand__accent">SHOP</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation">
       <a href="#offres">Offres</a>
-      <a href="#how">Comment ça marche</a>
+      <a href="#features">Avantages</a>
+      <a href="#how">Installation</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-primary" id="ctaTop" href="#" rel="noopener">WhatsApp</a>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" id="ctaTopIG" href="#" rel="noopener">Instagram</a>
+      <a class="btn btn--primary" id="ctaTopWA" href="#" rel="noopener">WhatsApp</a>
+    </div>
   </header>
 
-  <main>
+  <main id="top">
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-inner">
-        <p class="pill">Test gratuit 24h • Activation rapide</p>
-        <h1>Accès Premium</h1>
-        <p class="sub">Sports • Films • Séries — Compatible Smart TV / Android / iPhone / PC</p>
+      <div class="hero__left">
+        <div class="pill">
+          <span class="dot"></span>
+          <span>Test gratuit 24h</span>
+          <span class="sep">•</span>
+          <span>Activation rapide</span>
+          <span class="sep">•</span>
+          <span>Support</span>
+        </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" id="ctaHero" href="#" rel="noopener">Demander un test</a>
-          <a class="btn btn-ghost" href="#offres">Voir les offres</a>
+        <h1 class="hero__title">
+          Accès <span class="grad">Premium</span><br/>
+          <span class="hero__subtitle">Sports • Films • Séries</span>
+        </h1>
+
+        <p class="hero__text">
+          Une expérience fluide et simple à installer. Vous nous dites votre appareil,
+          on vous guide en quelques minutes.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" id="ctaHeroWA" href="#" rel="noopener">
+            Demander un test
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#offres">
+            Voir les offres
+          </a>
         </div>
 
         <div class="trust">
-          <div class="trust-item">Support</div>
-          <div class="trust-item">Stable</div>
-          <div class="trust-item">Guide d’installation</div>
+          <div class="trust__item">
+            <span class="trust__kpi">24/7</span>
+            <span class="trust__label">Support</span>
+          </div>
+          <div class="trust__item">
+            <span class="trust__kpi">+12k</span>
+            <span class="trust__label">Chaînes</span>
+          </div>
+          <div class="trust__item">
+            <span class="trust__kpi">+36k</span>
+            <span class="trust__label">Films & séries</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Offre la plus choisie</h3>
-        <div class="price">
-          <span>12 mois</span>
-          <strong>249 DH</strong>
+      <div class="hero__right">
+        <div class="card card--glass">
+          <div class="card__top">
+            <div class="badge">Le plus choisi</div>
+            <div class="mini">Paiement simple • Assistance incluse</div>
+          </div>
+
+          <div class="pricing">
+            <div class="pricing__row">
+              <span>12 mois</span>
+              <strong>249 DH</strong>
+            </div>
+            <p class="muted">
+              Astuce : commencez par 1 mois si vous voulez tester tranquillement.
+            </p>
+          </div>
+
+          <div class="card__actions">
+            <a class="btn btn--primary btn--full" id="ctaCardWA" href="#" rel="noopener">Je veux le test</a>
+            <button class="btn btn--ghost btn--full" id="copyMsgBtn" type="button">Copier le message</button>
+          </div>
+
+          <div class="fineprint">
+            <span class="shield">✓</span>
+            <span>Test gratuit avant tout paiement</span>
+          </div>
         </div>
-        <p class="muted">Commencez par 1 mois si vous préférez tester tranquillement.</p>
-        <a class="btn btn-primary full" id="ctaCard" href="#" rel="noopener">Je veux le test</a>
+
+        <div class="bento">
+          <div class="bento__item">
+            <div class="bento__icon" aria-hidden="true">
+              <!-- lightning -->
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 12-14h-7l-1-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="bento__title">Activation rapide</div>
+              <div class="bento__text">On vous guide étape par étape.</div>
+            </div>
+          </div>
+
+          <div class="bento__item">
+            <div class="bento__icon" aria-hidden="true">
+              <!-- device -->
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v10H4V6Z" stroke="currentColor" stroke-width="2"/><path d="M8 20h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="bento__title">Multi-appareils</div>
+              <div class="bento__text">TV / Android / iPhone / PC.</div>
+            </div>
+          </div>
+
+          <div class="bento__item">
+            <div class="bento__icon" aria-hidden="true">
+              <!-- chat -->
+              <svg viewBox="0 0 24 24" fill="none"><path d="M21 14a4 4 0 0 1-4 4H8l-5 4V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="bento__title">Support WhatsApp</div>
+              <div class="bento__text">Réponse rapide & claire.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- OFFERS -->
     <section id="offres" class="section">
-      <h2>Offres</h2>
-      <p class="muted">Choisissez la durée qui vous convient.</p>
+      <div class="section__head">
+        <h2>Offres</h2>
+        <p class="muted">Choisissez votre durée. Test gratuit 24h disponible.</p>
+      </div>
 
-      <div class="grid">
+      <div class="offers">
         <article class="offer">
           <h3>1 mois</h3>
-          <p class="big">39 DH</p>
+          <div class="offer__price">39 <span>DH</span></div>
           <p class="muted">Idéal pour commencer</p>
-          <a class="btn btn-ghost full offer-cta" data-plan="1 mois - 39 DH" href="#">Choisir</a>
+          <a class="btn btn--ghost btn--full offerCta" data-plan="1 mois - 39 DH" href="#">Choisir</a>
         </article>
 
         <article class="offer">
           <h3>3 mois</h3>
-          <p class="big">99 DH</p>
-          <p class="muted">Bon rapport qualité/prix</p>
-          <a class="btn btn-ghost full offer-cta" data-plan="3 mois - 99 DH" href="#">Choisir</a>
+          <div class="offer__price">99 <span>DH</span></div>
+          <p class="muted">Meilleur compromis</p>
+          <a class="btn btn--ghost btn--full offerCta" data-plan="3 mois - 99 DH" href="#">Choisir</a>
         </article>
 
         <article class="offer">
           <h3>6 mois</h3>
-          <p class="big">149 DH</p>
+          <div class="offer__price">149 <span>DH</span></div>
           <p class="muted">Pour être tranquille</p>
-          <a class="btn btn-ghost full offer-cta" data-plan="6 mois - 149 DH" href="#">Choisir</a>
+          <a class="btn btn--ghost btn--full offerCta" data-plan="6 mois - 149 DH" href="#">Choisir</a>
         </article>
 
-        <article class="offer highlight">
+        <article class="offer offer--best">
+          <div class="tag">TOP</div>
           <h3>12 mois</h3>
-          <p class="big">249 DH</p>
+          <div class="offer__price">249 <span>DH</span></div>
           <p class="muted">Meilleure valeur</p>
-          <a class="btn btn-primary full offer-cta" data-plan="12 mois - 249 DH" href="#">Choisir</a>
+          <a class="btn btn--primary btn--full offerCta" data-plan="12 mois - 249 DH" href="#">Choisir</a>
         </article>
+      </div>
+
+      <div class="note">
+        <span class="note__icon">★</span>
+        <p>
+          Conseil : si vous hésitez, commencez par <strong>1 mois</strong> puis passez à <strong>12 mois</strong> une fois satisfait.
+        </p>
       </div>
     </section>
 
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <div class="section__head">
+        <h2>Pourquoi Pluton Shop ?</h2>
+        <p class="muted">Simple, propre, efficace — l’objectif est que ça marche chez vous.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Qualité stable</h3>
+          <p class="muted">Testez sur vos chaînes préférées, puis décidez.</p>
+        </div>
+        <div class="feature">
+          <h3>Installation guidée</h3>
+          <p class="muted">Android TV, Smart TV, iPhone ou PC — on adapte.</p>
+        </div>
+        <div class="feature">
+          <h3>Support</h3>
+          <p class="muted">On répond clairement, sans vous laisser bloqué.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW -->
     <section id="how" class="section">
-      <h2>Comment ça marche</h2>
+      <div class="section__head">
+        <h2>Installation en 3 étapes</h2>
+        <p class="muted">Rapide. On vous accompagne.</p>
+      </div>
+
       <div class="steps">
         <div class="step">
-          <span class="num">1</span>
-          <h3>Demandez un test</h3>
-          <p class="muted">Vous nous dites votre appareil (Smart TV / Android / iPhone / PC).</p>
+          <div class="step__num">1</div>
+          <h3>Vous demandez un test</h3>
+          <p class="muted">Vous dites votre appareil (TV / Android / iPhone / PC).</p>
         </div>
         <div class="step">
-          <span class="num">2</span>
+          <div class="step__num">2</div>
           <h3>On vous guide</h3>
-          <p class="muted">Installation simple en quelques minutes.</p>
+          <p class="muted">On vous donne les étapes et on reste disponible.</p>
         </div>
         <div class="step">
-          <span class="num">3</span>
+          <div class="step__num">3</div>
           <h3>Activation</h3>
-          <p class="muted">Si la qualité vous convient, on active immédiatement.</p>
+          <p class="muted">Si la qualité vous convient, activation immédiate.</p>
+        </div>
+      </div>
+
+      <div class="compat">
+        <div class="compat__title">Compatible</div>
+        <div class="compat__chips">
+          <span class="chip">Android TV / Box</span>
+          <span class="chip">Smart TV</span>
+          <span class="chip">Android</span>
+          <span class="chip">iPhone</span>
+          <span class="chip">PC</span>
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq" class="section">
-      <h2>FAQ</h2>
+      <div class="section__head">
+        <h2>FAQ</h2>
+        <p class="muted">Réponses rapides aux questions fréquentes.</p>
+      </div>
+
       <div class="faq">
         <details>
-          <summary>Quels appareils sont compatibles ?</summary>
-          <p>Smart TV, Android TV/Box, Android, iPhone, PC. On vous guide selon votre appareil.</p>
-        </details>
-        <details>
-          <summary>Le test est vraiment gratuit ?</summary>
-          <p>Oui, test gratuit 24h. Vous payez seulement si la qualité vous convient.</p>
+          <summary>Le test est-il vraiment gratuit ?</summary>
+          <p>Oui. Vous testez 24h, puis vous décidez. Aucun paiement avant validation.</p>
         </details>
         <details>
           <summary>Combien de temps pour activer ?</summary>
-          <p>En général 5–10 minutes après confirmation.</p>
+          <p>Généralement 5–10 minutes après confirmation (selon l’appareil).</p>
         </details>
+        <details>
+          <summary>Je ne suis pas à l’aise avec l’installation…</summary>
+          <p>Pas de souci. On vous guide pas à pas (message ou vocal).</p>
+        </details>
+        <details>
+          <summary>Quel appareil utilisez-vous ?</summary>
+          <p>Dites-nous votre appareil (Android TV / Smart TV / iPhone / PC) et on adapte la méthode.</p>
+        </details>
+      </div>
+
+      <div class="finalCta">
+        <div>
+          <h3>Prêt à tester ?</h3>
+          <p class="muted">Cliquez et envoyez “TEST”. On s’occupe du reste.</p>
+        </div>
+        <a class="btn btn--primary btn--lg" id="ctaBottomWA" href="#" rel="noopener">WhatsApp</a>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="logo small">PLUTON<span>SHOP</span></div>
-      <p class="muted">© <span id="year"></span> Pluton Shop</p>
+      <div class="footer__left">
+        <div class="brand brand--small">
+          <span class="brand__word">PLUTON</span>
+          <span class="brand__accent">SHOP</span>
+        </div>
+        <p class="muted">© <span id="year"></span> Pluton Shop</p>
+      </div>
+      <div class="footer__right">
+        <a href="#offres">Offres</a>
+        <a href="#faq">FAQ</a>
+      </div>
     </footer>
   </main>
+
+  <!-- Mobile sticky CTA -->
+  <div class="sticky" role="region" aria-label="Actions rapides">
+    <a class="sticky__btn" id="stickyIG" href="#" rel="noopener">Instagram</a>
+    <a class="sticky__btn sticky__btn--primary" id="stickyWA" href="#" rel="noopener">Demander un test</a>
+  </div>
 
   <script src="script.js"></script>
 </body>
