@@ -361,3 +361,8 @@ strong{color:var(--text)}
   .bento{grid-template-columns:1fr}
   .sticky{display:none}
 }
+
+@media print {
+  .sticky, .nav { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
