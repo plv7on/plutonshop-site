@@ -277,33 +277,35 @@ strong{color:var(--text)}
   body{background:#fff !important;color:#000 !important;}
 }
 
-/* Logo */
+/* ===== LOGO FINAL (CLEAN & PRO) ===== */
 .brand__logo{
-  width:22px;
-  height:22px;
+  width:18px;          /* taille parfaite mobile */
+  height:18px;
   object-fit:contain;
-  flex:0 0 auto;
+  flex-shrink:0;
   display:block;
 }
 
-/* Circle logo */
+/* Logo rond */
 .brand__logo--circle{
   border-radius:999px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  padding:2px;
 }
 
-/* Square logo */
+/* Logo carré */
 .brand__logo--square{
-  border-radius:8px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  padding:2px;
+  border-radius:6px;
 }
 
-/* Footer smaller */
+/* Footer (plus discret) */
 .brand--small .brand__logo{
-  width:16px;
-  height:16px;
+  width:14px;
+  height:14px;
+}
+
+/* Desktop : légèrement plus grand */
+@media (min-width: 900px){
+  .brand__logo{
+    width:20px;
+    height:20px;
+  }
 }
