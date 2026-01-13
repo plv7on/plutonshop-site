@@ -5,20 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pluton Shop — Accès Premium</title>
   <meta name="description" content="Accès Premium : Sports • Films • Séries. Test gratuit 24h. Activation rapide." />
-  <meta name="theme-color" content="#070a09" />
+  <meta name="theme-color" content="#070909" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <header class="topbar">
+  <!-- Topbar -->
+  <header class="topbar" id="top">
     <div class="wrap topbar__inner">
+      <!-- LOGO PLACEHOLDER (tu pourras remplacer plus tard) -->
       <a class="brand" href="#top" aria-label="Pluton Shop">
-        <span class="brand__a">PLUTON</span><span class="brand__b">SHOP</span>
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">PLUTON</span>
+          <span class="brand__accent">SHOP</span>
+        </span>
       </a>
 
-      <nav class="menu" aria-label="Navigation">
+      <nav class="nav" aria-label="Navigation">
         <a href="#offres">Offres</a>
-        <a href="#how">Installation</a>
+        <a href="#how">Process</a>
         <a href="#faq">FAQ</a>
       </nav>
 
@@ -29,20 +35,12 @@
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
+  <main>
+    <!-- HERO (minimal, clean, no clichés) -->
     <section class="hero">
       <div class="wrap hero__grid">
-        <div class="hero__left">
-          <div class="pill">
-            <span class="pill__dot"></span>
-            <span>Test gratuit 24h</span>
-            <span class="pill__sep">•</span>
-            <span>Activation rapide</span>
-            <span class="pill__sep">•</span>
-            <span>Support</span>
-          </div>
-
+        <div class="hero__copy">
+          <p class="eyebrow">Test gratuit 24h • Activation rapide • Support</p>
           <h1 class="h1">Accès Premium</h1>
           <p class="sub">Sports • Films • Séries</p>
 
@@ -50,49 +48,41 @@
             Dites-nous votre appareil (TV / Android / iPhone / PC) et on vous guide en quelques minutes.
           </p>
 
-          <div class="hero__cta">
+          <div class="hero__actions">
             <a class="btn btn--primary btn--lg" id="waHero" href="#" rel="noopener">Demander un test</a>
             <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
           </div>
 
-          <div class="stats" aria-label="Points clés">
-            <div class="stat">
-              <div class="stat__top">24/7</div>
-              <div class="stat__bot">Support</div>
-            </div>
-            <div class="stat">
-              <div class="stat__top">TV</div>
-              <div class="stat__bot">Android TV / Smart TV</div>
-            </div>
-            <div class="stat">
-              <div class="stat__top">Mobile</div>
-              <div class="stat__bot">Android / iPhone</div>
-            </div>
+          <div class="meta">
+            <div class="meta__item">Installation guidée</div>
+            <div class="meta__item">Multi-appareils</div>
+            <div class="meta__item">Support WhatsApp</div>
           </div>
         </div>
 
-        <aside class="hero__right">
-          <div class="card">
-            <div class="card__head">
-              <div class="card__title">Offre recommandée</div>
-              <div class="card__desc">Simple • Propre • Assistance incluse</div>
+        <!-- Right panel: one clean block, no bento -->
+        <aside class="hero__panel">
+          <div class="panel">
+            <div class="panel__head">
+              <div class="panel__title">Recommandé</div>
+              <div class="panel__small">Le choix le plus simple pour être tranquille.</div>
             </div>
 
-            <div class="pricebox">
-              <span class="pricebox__l">12 mois</span>
-              <span class="pricebox__r">249 DH</span>
+            <div class="panel__price">
+              <span>12 mois</span>
+              <strong>249 DH</strong>
             </div>
 
-            <p class="card__note">
-              Conseil : commencez par <strong>1 mois</strong> si vous préférez tester tranquillement.
+            <p class="panel__note">
+              Vous pouvez commencer par <strong>1 mois</strong> si vous préférez tester.
             </p>
 
-            <div class="card__buttons">
-              <a class="btn btn--primary btn--full" id="waCard" href="#" rel="noopener">TEST 24H</a>
+            <div class="panel__actions">
+              <a class="btn btn--primary btn--full" id="waPanel" href="#" rel="noopener">TEST 24H</a>
               <button class="btn btn--ghost btn--full" id="copyBtn" type="button">Copier le message</button>
             </div>
 
-            <div class="card__foot">✓ Test avant paiement</div>
+            <div class="panel__foot">✓ Test avant paiement</div>
           </div>
         </aside>
       </div>
@@ -101,46 +91,48 @@
     <!-- OFFRES -->
     <section id="offres" class="section">
       <div class="wrap">
-        <div class="head">
+        <header class="section__head">
           <h2 class="h2">Offres</h2>
-          <p class="muted">Choisissez la durée qui vous convient. Test gratuit 24h disponible.</p>
-        </div>
+          <p class="muted">Sélectionnez votre durée. Test gratuit 24h disponible.</p>
+        </header>
 
-        <div class="grid">
-          <article class="tile">
+        <div class="offers">
+          <article class="offer">
             <h3 class="h3">1 mois</h3>
-            <div class="money">39 <span>DH</span></div>
+            <div class="price">39 <span>DH</span></div>
             <p class="muted">Idéal pour commencer</p>
             <a class="btn btn--ghost btn--full offerBtn" data-plan="1 mois - 39 DH" href="#">Choisir</a>
           </article>
 
-          <article class="tile">
+          <article class="offer">
             <h3 class="h3">3 mois</h3>
-            <div class="money">99 <span>DH</span></div>
+            <div class="price">99 <span>DH</span></div>
             <p class="muted">Meilleur compromis</p>
             <a class="btn btn--ghost btn--full offerBtn" data-plan="3 mois - 99 DH" href="#">Choisir</a>
           </article>
 
-          <article class="tile">
+          <article class="offer">
             <h3 class="h3">6 mois</h3>
-            <div class="money">149 <span>DH</span></div>
+            <div class="price">149 <span>DH</span></div>
             <p class="muted">Pour être tranquille</p>
             <a class="btn btn--ghost btn--full offerBtn" data-plan="6 mois - 149 DH" href="#">Choisir</a>
           </article>
 
-          <article class="tile tile--best">
-            <div class="tag">TOP</div>
+          <article class="offer offer--best" aria-label="Offre top">
+            <div class="offer__tag">TOP</div>
             <h3 class="h3">12 mois</h3>
-            <div class="money">249 <span>DH</span></div>
+            <div class="price">249 <span>DH</span></div>
             <p class="muted">Meilleure valeur</p>
             <a class="btn btn--primary btn--full offerBtn" data-plan="12 mois - 249 DH" href="#">Choisir</a>
           </article>
         </div>
 
-        <div class="bar">
-          <span>✓ Test gratuit 24h</span>
-          <span>✓ Guide d’installation</span>
-          <span>✓ Support WhatsApp</span>
+        <div class="finebar">
+          <span>Test gratuit 24h</span>
+          <span>•</span>
+          <span>Activation rapide</span>
+          <span>•</span>
+          <span>Support</span>
         </div>
       </div>
     </section>
@@ -148,37 +140,27 @@
     <!-- HOW -->
     <section id="how" class="section section--alt">
       <div class="wrap">
-        <div class="head">
-          <h2 class="h2">Installation</h2>
-          <p class="muted">En 3 étapes simples, on vous accompagne.</p>
-        </div>
+        <header class="section__head">
+          <h2 class="h2">Process</h2>
+          <p class="muted">Clair, simple, sans prise de tête.</p>
+        </header>
 
-        <div class="steps">
-          <div class="step">
-            <div class="step__n">1</div>
-            <div class="step__t">Demandez un test</div>
+        <div class="how">
+          <div class="how__item">
+            <div class="how__n">01</div>
+            <div class="how__t">Vous demandez un test</div>
             <div class="muted">Vous indiquez votre appareil.</div>
           </div>
-
-          <div class="step">
-            <div class="step__n">2</div>
-            <div class="step__t">On vous guide</div>
-            <div class="muted">Étapes claires + assistance.</div>
+          <div class="how__item">
+            <div class="how__n">02</div>
+            <div class="how__t">On vous guide</div>
+            <div class="muted">Étapes courtes, adaptées à votre cas.</div>
           </div>
-
-          <div class="step">
-            <div class="step__n">3</div>
-            <div class="step__t">Activation</div>
+          <div class="how__item">
+            <div class="how__n">03</div>
+            <div class="how__t">Activation</div>
             <div class="muted">Si tout est OK, activation immédiate.</div>
           </div>
-        </div>
-
-        <div class="chips">
-          <span class="chip">Android TV / Box</span>
-          <span class="chip">Smart TV</span>
-          <span class="chip">Android</span>
-          <span class="chip">iPhone</span>
-          <span class="chip">PC</span>
         </div>
       </div>
     </section>
@@ -186,31 +168,29 @@
     <!-- FAQ -->
     <section id="faq" class="section">
       <div class="wrap">
-        <div class="head">
+        <header class="section__head">
           <h2 class="h2">FAQ</h2>
-          <p class="muted">Réponses rapides aux questions fréquentes.</p>
-        </div>
+          <p class="muted">Réponses rapides.</p>
+        </header>
 
         <div class="faq">
           <details>
             <summary>Le test est-il vraiment gratuit ?</summary>
             <p>Oui. Vous testez 24h, puis vous décidez. Aucun paiement avant validation.</p>
           </details>
-
           <details>
             <summary>Combien de temps pour activer ?</summary>
             <p>En général 5–10 minutes après confirmation, selon l’appareil.</p>
           </details>
-
           <details>
-            <summary>Je ne suis pas à l’aise avec l’installation…</summary>
-            <p>Pas de souci. On vous guide étape par étape (message ou vocal).</p>
+            <summary>Je ne suis pas à l’aise avec l’installation</summary>
+            <p>Pas de souci : on vous guide étape par étape (message ou vocal).</p>
           </details>
         </div>
 
-        <div class="final">
+        <div class="cta">
           <div>
-            <div class="final__t">Prêt à tester ?</div>
+            <div class="cta__t">Prêt à tester ?</div>
             <div class="muted">Envoyez “TEST 24H” sur WhatsApp.</div>
           </div>
           <a class="btn btn--primary btn--lg" id="waBottom" href="#" rel="noopener">WhatsApp</a>
@@ -220,9 +200,13 @@
 
     <footer class="footer">
       <div class="wrap footer__inner">
-        <div>
-          <div class="brand brand--small">
-            <span class="brand__a">PLUTON</span><span class="brand__b">SHOP</span>
+        <div class="footer__left">
+          <div class="brand brand--small" aria-label="Pluton Shop">
+            <span class="brand__mark brand__mark--small" aria-hidden="true"></span>
+            <span class="brand__text">
+              <span class="brand__name">PLUTON</span>
+              <span class="brand__accent">SHOP</span>
+            </span>
           </div>
           <div class="muted">© <span id="year"></span> Pluton Shop</div>
         </div>
@@ -233,7 +217,7 @@
       </div>
     </footer>
 
-    <!-- Sticky mobile (stable + safe-area) -->
+    <!-- Sticky mobile -->
     <div class="sticky" role="region" aria-label="Actions rapides">
       <a class="btn btn--ghost btn--full" id="igSticky" href="#" rel="noopener">Instagram</a>
       <a class="btn btn--primary btn--full" id="waSticky" href="#" rel="noopener">TEST 24H</a>
