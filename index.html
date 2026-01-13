@@ -4,315 +4,573 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pluton Shop — Accès Premium</title>
-  <meta name="description" content="Accès Premium : Sports • Films • Séries. Essai gratuit 24h. Activation rapide." />
+  <meta name="description" content="Accès Premium : Sports • Films • Séries. Essai 24h. Activation rapide." />
   <meta name="theme-color" content="#070909" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --bg:#060807;
+      --panel: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
+      --muted: rgba(255,255,255,.68);
+      --text:#ffffff;
+      --g1:#18f3a3;
+      --g2:#0bcf8c;
+      --shadow: 0 40px 90px rgba(0,0,0,.75);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(24,243,163,.14), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(11,207,140,.12), transparent 55%),
+        linear-gradient(180deg, #060807, #040605);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1040px; margin:0 auto; padding: 18px 16px 60px}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(6,8,7,.66);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .topbar__inner{
+      max-width:1040px; margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      letter-spacing:.3px;
+      font-weight:650;
+    }
+    .dot{
+      width:14px; height:14px; border-radius:6px;
+      background: linear-gradient(135deg, var(--g1), var(--g2));
+      box-shadow: 0 10px 25px rgba(24,243,163,.18);
+    }
+    .brand b{color: #bfffe9}
+    .nav{
+      display:flex; gap:12px; align-items:center;
+    }
+    .chip{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      border-radius:999px;
+      font-weight:600;
+      color: rgba(255,255,255,.9);
+      transition:.2s transform ease, .2s background ease;
+      user-select:none;
+    }
+    .chip:active{transform:scale(.98)}
+    .chip--primary{
+      border:none;
+      background: linear-gradient(135deg, var(--g1), var(--g2));
+      color:#00110a;
+      box-shadow: 0 18px 40px rgba(11,207,140,.22);
+    }
+
+    /* Hero */
+    .hero{padding-top:26px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    }
+    .heroMain{padding:26px}
+    .eyebrow{
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:.9rem;
+      color: var(--muted);
+      margin:0 0 10px;
+    }
+    .badge{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.85);
+      font-weight:650;
+      font-size:.82rem;
+    }
+    h1{
+      margin:0 0 8px;
+      font-size: clamp(30px, 3.8vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 14px;
+      color: rgba(255,255,255,.86);
+      font-size: 1.05rem;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      line-height:1.55;
+      font-size:1rem;
+      max-width: 52ch;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      border-radius:999px;
+      padding:14px 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      font-weight:700;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      cursor:pointer;
+      transition: .22s transform ease, .22s box-shadow ease, .22s background ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+    .btn:active{transform: scale(.98)}
+    .btn--primary{
+      border:none;
+      background: linear-gradient(135deg, var(--g1), var(--g2));
+      color:#00110a;
+      box-shadow: 0 18px 40px rgba(11,207,140,.22);
+    }
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .meta .pill{
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.80);
+      font-weight:650;
+      font-size:.9rem;
+    }
+
+    /* Side */
+    .heroSide{padding:18px}
+    .sideTitle{
+      font-weight:750; letter-spacing:.2px;
+      margin:0 0 8px;
+    }
+    .sideSmall{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .priceRow{
+      display:flex; align-items:baseline; justify-content:space-between;
+      padding:14px 14px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      margin: 10px 0 12px;
+    }
+    .priceRow strong{font-size: 1.6rem}
+    .sideNote{
+      margin:0 0 14px; color:rgba(255,255,255,.75); line-height:1.55
+    }
+    .sideFooter{
+      color: rgba(255,255,255,.75);
+      font-weight:650;
+      font-size:.92rem;
+      display:flex; gap:8px; align-items:center;
+    }
+    .tick{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(24,243,163,.16);
+      display:inline-flex; align-items:center; justify-content:center;
+      border:1px solid rgba(24,243,163,.24);
+    }
+
+    /* Sections */
+    .section{margin-top:26px}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin: 0 0 12px;
+    }
+    h2{margin:0; font-size: 1.5rem}
+    .muted{color:var(--muted); margin:0}
+    .offers{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .offer{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      position:relative;
+      overflow:hidden;
+      transform: translateY(0);
+      transition: .22s transform ease, .22s background ease;
+    }
+    .offer:active{transform: scale(.99)}
+    .offer--best{
+      border-color: rgba(24,243,163,.35);
+      background: linear-gradient(180deg, rgba(24,243,163,.08), rgba(255,255,255,.05));
+    }
+    .tag{
+      position:absolute; top:12px; right:12px;
+      padding:6px 10px; border-radius:999px;
+      background: rgba(24,243,163,.18);
+      border: 1px solid rgba(24,243,163,.30);
+      font-weight:800; font-size:.8rem;
+    }
+    .offer h3{margin:0 0 10px; font-size:1.05rem}
+    .price{
+      font-size: 1.9rem;
+      font-weight:900;
+      letter-spacing:-.4px;
+      margin: 0 0 6px;
+    }
+    .price span{font-size: .95rem; color: rgba(255,255,255,.75); font-weight:750}
+    .offer p{margin:0 0 12px}
+    .offer .btn{width:100%}
+
+    /* Footer */
+    footer{
+      margin-top:32px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.75);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .links{display:flex; gap:14px; font-weight:700; color: rgba(255,255,255,.78)}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; z-index:999; display:none; padding:16px;}
+    .modal.is-open{display:flex; align-items:center; justify-content:center;}
+    .backdrop{
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .dialog{
+      position:relative;
+      width: min(560px, 100%);
+      max-height: 80vh;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+      background: linear-gradient(180deg, #0b1412, #060a09);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      animation: pop .34s cubic-bezier(.2,.9,.2,1) both;
+    }
+    @keyframes pop{
+      from{transform: translateY(20px) scale(.96); opacity:0}
+      to{transform: translateY(0) scale(1); opacity:1}
+    }
+    .close{
+      position:absolute; top:12px; right:12px;
+      width:36px; height:36px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.07);
+      color:#fff;
+      font-size:18px;
+      cursor:pointer;
+    }
+    .formTitle{margin:6px 0 6px; font-size:1.35rem; font-weight:900}
+    .formDesc{margin:0 0 14px; color: rgba(255,255,255,.70); line-height:1.5}
+    form{display:grid; grid-template-columns: 1fr; gap:12px}
+    input, select, textarea{
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+      font-size: 15px;
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{color: rgba(255,255,255,.5)}
+    textarea{min-height:80px; resize:none}
+    .submit{
+      padding: 16px 18px;
+      border-radius: 999px;
+      border:none;
+      background: linear-gradient(135deg, var(--g1), var(--g2));
+      color:#00110a;
+      font-weight:900;
+      font-size: 1rem;
+      box-shadow: 0 18px 40px rgba(11,207,140,.22);
+      cursor:pointer;
+    }
+    .miniNote{margin:8px 0 0; text-align:center; color: rgba(255,255,255,.6); font-size:.85rem}
+
+    html.modal-open, body.modal-open{overflow:hidden;}
+
+    /* Mobile */
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns: 1fr}
+      .offers{grid-template-columns: 1fr 1fr}
+      .topbar__inner{gap:8px}
+      .nav{gap:8px}
+      .chip{padding:10px 12px}
+    }
+    @media (max-width: 520px){
+      .offers{grid-template-columns: 1fr}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Ambient background -->
-  <div class="bg" aria-hidden="true">
-    <div class="orb orb--a"></div>
-    <div class="orb orb--b"></div>
-    <div class="gridGlow"></div>
-  </div>
-
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="#top" aria-label="Pluton Shop">
-        <!-- Remplace plus tard par <img class="brand__logo" ...> -->
-        <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__text">
-          <span class="brand__name">PLUTON</span>
-          <span class="brand__accent">SHOP</span>
-        </span>
-      </a>
-
-      <nav class="nav" aria-label="Navigation">
-        <a href="#offres">Offres</a>
-        <a href="#essai">Essai</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <div class="topbar__actions">
-        <a class="btn btn--ghost" href="https://instagram.com/plutonshopma" rel="noopener">Instagram</a>
-        <button class="btn btn--primary js-open-modal" type="button" data-source="topbar">
-          Je suis intéressé
-        </button>
+  <div class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>PLUTON <b>SHOP</b></span>
+      </div>
+      <div class="nav">
+        <a class="chip" href="https://instagram.com/plutonshopma" target="_blank" rel="noopener">Instagram</a>
+        <button class="chip chip--primary" id="openModalTop" type="button">Je suis intéressé</button>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main id="top">
-    <!-- HERO -->
+  <div class="wrap">
     <section class="hero">
-      <div class="wrap hero__grid">
-        <div class="hero__copy">
-          <p class="eyebrow reveal">Essai gratuit 24h • Activation rapide • Support</p>
-
-          <h1 class="h1 reveal">Accès Premium</h1>
-          <p class="sub reveal">Sports • Films • Séries</p>
-
-          <p class="lead reveal">
-            Une expérience simple et fluide. Dites-nous votre appareil (TV / Android / iPhone / PC),
-            on vous guide en quelques minutes.
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <p class="eyebrow">
+            <span class="badge">Essai 24h</span>
+            <span>Activation rapide • Support</span>
           </p>
 
-          <div class="hero__actions reveal">
-            <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="hero">
-              Demander un essai
-            </button>
+          <h1>Accès Premium</h1>
+          <p class="sub">Sports • Films • Séries</p>
 
-            <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
+          <p class="lead">
+            Dites-nous votre appareil (TV / Android / iPhone / PC). On vous guide en quelques minutes.
+          </p>
 
-            <a class="btn btn--ghost btn--lg"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              WhatsApp direct
-            </a>
+          <div class="actions">
+            <button class="btn btn--primary" id="openModalHero" type="button">Demander un essai</button>
+            <a class="btn" href="#offres">Voir les offres</a>
           </div>
 
-          <div class="trust reveal" aria-label="Points forts">
-            <div class="trust__item">
-              <div class="trust__big">Guidé</div>
-              <div class="trust__small">Installation</div>
-            </div>
-            <div class="trust__item">
-              <div class="trust__big">Stable</div>
-              <div class="trust__small">Qualité</div>
-            </div>
-            <div class="trust__item">
-              <div class="trust__big">Réactif</div>
-              <div class="trust__small">Support</div>
-            </div>
+          <div class="meta">
+            <div class="pill">Installation guidée</div>
+            <div class="pill">Multi-appareils</div>
+            <div class="pill">Support WhatsApp</div>
           </div>
         </div>
 
-        <aside class="hero__panel reveal">
-          <div class="panel">
-            <div class="panel__head">
-              <div class="panel__title">Offre recommandée</div>
-              <div class="panel__small">Le meilleur choix si vous voulez être tranquille.</div>
-            </div>
+        <aside class="card heroSide">
+          <div class="sideTitle">Recommandé</div>
+          <p class="sideSmall">Le choix le plus simple pour être tranquille.</p>
 
-            <div class="panel__price">
-              <span>12 mois</span>
-              <strong>249 DH</strong>
-            </div>
+          <div class="priceRow">
+            <span>12 mois</span>
+            <strong>249 DH</strong>
+          </div>
 
-            <p class="panel__note">
-              Conseil : commencez par <strong>1 mois</strong> si vous préférez tester.
-            </p>
+          <p class="sideNote">Vous pouvez commencer par <b>1 mois</b> si vous préférez tester.</p>
 
-            <div class="panel__actions">
-              <button class="btn btn--primary btn--full js-open-modal" type="button" data-source="panel">
-                Je suis intéressé
-              </button>
+          <button class="btn btn--primary" id="openModalSide" type="button" style="width:100%">TEST 24H</button>
 
-              <a class="btn btn--ghost btn--full"
-                 href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-                 rel="noopener">
-                WhatsApp direct
-              </a>
-            </div>
-
-            <div class="panel__foot">✓ Essai avant paiement</div>
+          <div class="sideFooter" style="margin-top:14px">
+            <span class="tick">✓</span>
+            <span>Test avant paiement</span>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- OFFRES -->
     <section id="offres" class="section">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <h2 class="h2">Offres</h2>
-          <p class="muted">Choisissez votre durée. Essai 24h disponible.</p>
-        </header>
+      <div class="sectionHead">
+        <h2>Offres</h2>
+        <p class="muted">Choisissez votre durée.</p>
+      </div>
 
-        <div class="offers">
-          <article class="offer reveal">
-            <h3 class="h3">1 mois</h3>
-            <div class="price">39 <span>DH</span></div>
-            <p class="muted">Idéal pour commencer</p>
-            <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%201%20mois%20-%2039%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">Choisir</a>
-          </article>
+      <div class="offers">
+        <article class="offer">
+          <h3>1 mois</h3>
+          <div class="price">39 <span>DH</span></div>
+          <p class="muted">Idéal pour commencer</p>
+          <button class="btn" type="button" data-plan="1 mois - 39 DH">Choisir</button>
+        </article>
 
-          <article class="offer reveal">
-            <h3 class="h3">3 mois</h3>
-            <div class="price">99 <span>DH</span></div>
-            <p class="muted">Meilleur compromis</p>
-            <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%203%20mois%20-%2099%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">Choisir</a>
-          </article>
+        <article class="offer">
+          <h3>3 mois</h3>
+          <div class="price">99 <span>DH</span></div>
+          <p class="muted">Meilleur compromis</p>
+          <button class="btn" type="button" data-plan="3 mois - 99 DH">Choisir</button>
+        </article>
 
-          <article class="offer reveal">
-            <h3 class="h3">6 mois</h3>
-            <div class="price">149 <span>DH</span></div>
-            <p class="muted">Pour être tranquille</p>
-            <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%206%20mois%20-%20149%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">Choisir</a>
-          </article>
+        <article class="offer">
+          <h3>6 mois</h3>
+          <div class="price">149 <span>DH</span></div>
+          <p class="muted">Pour être tranquille</p>
+          <button class="btn" type="button" data-plan="6 mois - 149 DH">Choisir</button>
+        </article>
 
-          <article class="offer offer--best reveal" aria-label="Offre top">
-            <div class="offer__tag">TOP</div>
-            <h3 class="h3">12 mois</h3>
-            <div class="price">249 <span>DH</span></div>
-            <p class="muted">Meilleure valeur</p>
-            <a class="btn btn--primary btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%2012%20mois%20-%20249%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">Choisir</a>
-          </article>
-        </div>
-
-        <div class="finebar reveal">
-          <span>Essai 24h</span><span>•</span><span>Activation rapide</span><span>•</span><span>Support</span>
-        </div>
+        <article class="offer offer--best">
+          <span class="tag">TOP</span>
+          <h3>12 mois</h3>
+          <div class="price">249 <span>DH</span></div>
+          <p class="muted">Meilleure valeur</p>
+          <button class="btn btn--primary" type="button" data-plan="12 mois - 249 DH">Choisir</button>
+        </article>
       </div>
     </section>
 
-    <!-- NEW SECTION: ESSAI -->
-    <section id="essai" class="section section--alt">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <h2 class="h2">Demander un essai</h2>
-          <p class="muted">Cliquez sur “Je suis intéressé” et remplissez le mini-formulaire (10 secondes).</p>
-        </header>
-
-        <div class="ctaCard reveal">
-          <div class="ctaCard__left">
-            <div class="ctaCard__title">Essai gratuit 24h</div>
-            <div class="ctaCard__text muted">
-              On vous répond avec les étapes adaptées à votre appareil, puis vous testez.
-            </div>
-          </div>
-
-          <div class="ctaCard__right">
-            <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="essai-section">
-              Je suis intéressé
-            </button>
-            <a class="btn btn--ghost btn--lg"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              WhatsApp direct
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <h2 class="h2">FAQ</h2>
-          <p class="muted">Réponses rapides.</p>
-        </header>
-
-        <div class="faq reveal">
-          <details>
-            <summary>L’essai est-il vraiment gratuit ?</summary>
-            <p>Oui. Vous testez 24h, puis vous décidez. Aucun paiement avant validation.</p>
-          </details>
-          <details>
-            <summary>Combien de temps pour activer ?</summary>
-            <p>En général 5–10 minutes après confirmation, selon l’appareil.</p>
-          </details>
-          <details>
-            <summary>Je ne suis pas à l’aise avec l’installation…</summary>
-            <p>Pas de souci : on vous guide étape par étape (message ou vocal).</p>
-          </details>
-        </div>
-
-        <div class="bottomCta reveal">
-          <div>
-            <div class="bottomCta__t">Prêt à tester ?</div>
-            <div class="muted">Remplissez le formulaire et on s’occupe du reste.</div>
-          </div>
-          <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="bottom-cta">
-            Je suis intéressé
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="wrap footer__inner">
-        <div class="muted">© <span id="year"></span> Pluton Shop</div>
-        <div class="footer__links">
-          <a href="#offres">Offres</a>
-          <a href="#essai">Essai</a>
-          <a href="#faq">FAQ</a>
-        </div>
+    <footer>
+      <div>© <span id="year"></span> Pluton Shop</div>
+      <div class="links">
+        <a href="#offres">Offres</a>
+        <a href="#" id="openModalFooter">Essai</a>
       </div>
     </footer>
-  </main>
+  </div>
 
-  <!-- MODAL -->
-  <div class="modal" id="leadModal" aria-hidden="true">
-    <div class="modal__backdrop" data-close="1"></div>
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="backdrop" id="closeBackdrop"></div>
 
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal__close" type="button" aria-label="Fermer" data-close="1">✕</button>
+    <div class="dialog" role="dialog" aria-modal="true" aria-label="Demande d'essai">
+      <button class="close" id="closeBtn" type="button">✕</button>
 
-      <div class="modal__head">
-        <div class="modal__kicker">Demande d’essai</div>
-        <h3 class="modal__title" id="modalTitle">Dites-nous juste l’essentiel</h3>
-        <p class="muted">On prépare votre essai 24h et on vous guide selon votre appareil.</p>
-      </div>
+      <div class="formTitle">Demande d’essai</div>
+      <p class="formDesc">Dites-nous juste l’essentiel. Le message sera préparé automatiquement.</p>
 
-      <form class="form" id="leadForm">
-        <div class="form__grid">
-          <label class="field">
-            <span class="field__label">Nom (optionnel)</span>
-            <input class="field__input" name="name" type="text" placeholder="Ex: Yassine" autocomplete="name" />
-          </label>
+      <form id="trialForm">
+        <input name="name" placeholder="Nom (optionnel)" autocomplete="name" />
+        <select name="device" required>
+          <option value="">Votre appareil</option>
+          <option>Android TV</option>
+          <option>Smart TV</option>
+          <option>Android (téléphone)</option>
+          <option>iPhone</option>
+          <option>PC</option>
+        </select>
+        <select name="duration">
+          <option>Essai 24h</option>
+          <option>1 mois</option>
+          <option>3 mois</option>
+          <option>6 mois</option>
+          <option>12 mois</option>
+        </select>
+        <textarea name="note" placeholder="Note (optionnel) — ex : je veux surtout sports / films…"></textarea>
 
-          <label class="field">
-            <span class="field__label">Votre appareil *</span>
-            <select class="field__input" name="device" required>
-              <option value="" selected disabled>Choisir…</option>
-              <option>Android TV / Box</option>
-              <option>Smart TV</option>
-              <option>Android (téléphone)</option>
-              <option>iPhone</option>
-              <option>PC / Laptop</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span class="field__label">Durée souhaitée</span>
-            <select class="field__input" name="plan">
-              <option value="Essai 24h" selected>Essai 24h</option>
-              <option>1 mois (39 DH)</option>
-              <option>3 mois (99 DH)</option>
-              <option>6 mois (149 DH)</option>
-              <option>12 mois (249 DH)</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span class="field__label">Note (optionnel)</span>
-            <input class="field__input" name="note" type="text" placeholder="Ex: Je veux tester sports/films" />
-          </label>
-        </div>
-
-        <div class="form__hint muted">
-          En cliquant sur “Envoyer sur WhatsApp”, un message sera préparé automatiquement.
-        </div>
-
-        <button class="btn btn--primary btn--full btn--xl" type="submit">
-          Envoyer sur WhatsApp
-        </button>
+        <button class="submit" type="submit">Envoyer sur WhatsApp</button>
       </form>
+
+      <p class="miniNote">Support rapide • Activation guidée</p>
     </div>
   </div>
 
-  <script src="app.js?v=1"></script>
+  <script>
+    // IMPORTANT: Mets ton numéro ici (sans +)
+    const PHONE = "212772649507";
+
+    const modal = document.getElementById("modal");
+    const openButtons = [
+      document.getElementById("openModalTop"),
+      document.getElementById("openModalHero"),
+      document.getElementById("openModalSide"),
+      document.getElementById("openModalFooter"),
+    ];
+
+    const closeBtn = document.getElementById("closeBtn");
+    const closeBackdrop = document.getElementById("closeBackdrop");
+    const form = document.getElementById("trialForm");
+
+    let selectedPlan = "";
+
+    function openModal() {
+      modal.classList.add("is-open");
+      document.documentElement.classList.add("modal-open");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      document.documentElement.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
+    }
+
+    openButtons.forEach(b => b && b.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal();
+    }));
+
+    closeBtn.addEventListener("click", closeModal);
+    closeBackdrop.addEventListener("click", closeModal);
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Offers -> open modal + prefill duration
+    document.querySelectorAll("[data-plan]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedPlan = btn.getAttribute("data-plan") || "";
+        openModal();
+        // prefill duration if matches
+        const durationSelect = form.querySelector('select[name="duration"]');
+        if (durationSelect && selectedPlan) {
+          const match = selectedPlan.split(" - ")[0].trim();
+          [...durationSelect.options].forEach(o => {
+            if (o.text.trim() === match) durationSelect.value = o.text.trim();
+          });
+        }
+      });
+    });
+
+    // Submit -> WhatsApp message
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+
+      const name = (fd.get("name") || "").toString().trim() || "Client";
+      const device = (fd.get("device") || "").toString().trim();
+      const duration = (fd.get("duration") || "Essai 24h").toString().trim();
+      const note = (fd.get("note") || "").toString().trim();
+
+      if (!device) {
+        alert("Veuillez choisir votre appareil.");
+        return;
+      }
+
+      const msg = [
+        "Bonjour 👋",
+        "Je souhaite un ESSAI ✅",
+        "",
+        `Nom : ${name}`,
+        `Appareil : ${device}`,
+        `Durée : ${duration}`,
+        note ? `Note : ${note}` : null,
+        selectedPlan ? `Offre choisie : ${selectedPlan}` : null
+      ].filter(Boolean).join("\n");
+
+      const url = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+      window.location.href = url;
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
