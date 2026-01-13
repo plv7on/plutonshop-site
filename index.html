@@ -4,59 +4,96 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pluton Shop — Accès Premium</title>
-  <meta name="description" content="Accès Premium : Sports • Films • Séries. Test gratuit 24h. Activation rapide." />
+  <meta name="description" content="Accès Premium : Sports • Films • Séries. Essai gratuit 24h. Activation rapide." />
   <meta name="theme-color" content="#070909" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <main>
+  <!-- Ambient background -->
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb--a"></div>
+    <div class="orb orb--b"></div>
+    <div class="gridGlow"></div>
+  </div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="#top" aria-label="Pluton Shop">
+        <!-- Remplace plus tard par <img class="brand__logo" ...> -->
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">PLUTON</span>
+          <span class="brand__accent">SHOP</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navigation">
+        <a href="#offres">Offres</a>
+        <a href="#essai">Essai</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="https://instagram.com/plutonshopma" rel="noopener">Instagram</a>
+        <button class="btn btn--primary js-open-modal" type="button" data-source="topbar">
+          Je suis intéressé
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
     <!-- HERO -->
-    <section class="hero" id="top">
+    <section class="hero">
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Test gratuit 24h • Activation rapide • Support</p>
-          <h1 class="h1">Accès Premium</h1>
-          <p class="sub">Sports • Films • Séries</p>
+          <p class="eyebrow reveal">Essai gratuit 24h • Activation rapide • Support</p>
 
-          <p class="lead">
-            Dites-nous votre appareil (TV / Android / iPhone / PC) et on vous guide en quelques minutes.
+          <h1 class="h1 reveal">Accès Premium</h1>
+          <p class="sub reveal">Sports • Films • Séries</p>
+
+          <p class="lead reveal">
+            Une expérience simple et fluide. Dites-nous votre appareil (TV / Android / iPhone / PC),
+            on vous guide en quelques minutes.
           </p>
 
-          <div class="hero__actions">
-            <!-- WA: TEST -->
-            <a class="btn btn--primary btn--lg"
-               id="waHero"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              Demander un test
-            </a>
+          <div class="hero__actions reveal">
+            <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="hero">
+              Demander un essai
+            </button>
 
-            <!-- Scroll -->
             <a class="btn btn--ghost btn--lg" href="#offres">Voir les offres</a>
 
-            <!-- IG -->
             <a class="btn btn--ghost btn--lg"
-               id="igHero"
-               href="https://instagram.com/plutonshopma"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
                rel="noopener">
-              Instagram
+              WhatsApp direct
             </a>
           </div>
 
-          <div class="meta">
-            <div class="meta__item">Installation guidée</div>
-            <div class="meta__item">Multi-appareils</div>
-            <div class="meta__item">Support WhatsApp</div>
+          <div class="trust reveal" aria-label="Points forts">
+            <div class="trust__item">
+              <div class="trust__big">Guidé</div>
+              <div class="trust__small">Installation</div>
+            </div>
+            <div class="trust__item">
+              <div class="trust__big">Stable</div>
+              <div class="trust__small">Qualité</div>
+            </div>
+            <div class="trust__item">
+              <div class="trust__big">Réactif</div>
+              <div class="trust__small">Support</div>
+            </div>
           </div>
         </div>
 
-        <!-- Right panel -->
-        <aside class="hero__panel">
+        <aside class="hero__panel reveal">
           <div class="panel">
             <div class="panel__head">
-              <div class="panel__title">Recommandé</div>
-              <div class="panel__small">Le choix le plus simple pour être tranquille.</div>
+              <div class="panel__title">Offre recommandée</div>
+              <div class="panel__small">Le meilleur choix si vous voulez être tranquille.</div>
             </div>
 
             <div class="panel__price">
@@ -65,22 +102,22 @@
             </div>
 
             <p class="panel__note">
-              Vous pouvez commencer par <strong>1 mois</strong> si vous préférez tester.
+              Conseil : commencez par <strong>1 mois</strong> si vous préférez tester.
             </p>
 
             <div class="panel__actions">
-              <a class="btn btn--primary btn--full"
-                 id="waPanel"
-                 href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-                 rel="noopener">
-                TEST 24H
-              </a>
+              <button class="btn btn--primary btn--full js-open-modal" type="button" data-source="panel">
+                Je suis intéressé
+              </button>
 
-              <!-- Copier message (nécessite JS, mais c'est OK s'il ne marche pas) -->
-              <button class="btn btn--ghost btn--full" id="copyBtn" type="button">Copier le message</button>
+              <a class="btn btn--ghost btn--full"
+                 href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+                 rel="noopener">
+                WhatsApp direct
+              </a>
             </div>
 
-            <div class="panel__foot">✓ Test avant paiement</div>
+            <div class="panel__foot">✓ Essai avant paiement</div>
           </div>
         </aside>
       </div>
@@ -89,91 +126,81 @@
     <!-- OFFRES -->
     <section id="offres" class="section">
       <div class="wrap">
-        <header class="section__head">
+        <header class="section__head reveal">
           <h2 class="h2">Offres</h2>
-          <p class="muted">Sélectionnez votre durée. Test gratuit 24h disponible.</p>
+          <p class="muted">Choisissez votre durée. Essai 24h disponible.</p>
         </header>
 
         <div class="offers">
-          <article class="offer">
+          <article class="offer reveal">
             <h3 class="h3">1 mois</h3>
             <div class="price">39 <span>DH</span></div>
             <p class="muted">Idéal pour commencer</p>
             <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%201%20mois%20-%2039%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              Choisir
-            </a>
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%201%20mois%20-%2039%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">Choisir</a>
           </article>
 
-          <article class="offer">
+          <article class="offer reveal">
             <h3 class="h3">3 mois</h3>
             <div class="price">99 <span>DH</span></div>
             <p class="muted">Meilleur compromis</p>
             <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%203%20mois%20-%2099%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              Choisir
-            </a>
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%203%20mois%20-%2099%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">Choisir</a>
           </article>
 
-          <article class="offer">
+          <article class="offer reveal">
             <h3 class="h3">6 mois</h3>
             <div class="price">149 <span>DH</span></div>
             <p class="muted">Pour être tranquille</p>
             <a class="btn btn--ghost btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%206%20mois%20-%20149%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              Choisir
-            </a>
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%206%20mois%20-%20149%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">Choisir</a>
           </article>
 
-          <article class="offer offer--best" aria-label="Offre top">
+          <article class="offer offer--best reveal" aria-label="Offre top">
             <div class="offer__tag">TOP</div>
             <h3 class="h3">12 mois</h3>
             <div class="price">249 <span>DH</span></div>
             <p class="muted">Meilleure valeur</p>
             <a class="btn btn--primary btn--full"
-               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%2012%20mois%20-%20249%20DH.%20Test%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-               rel="noopener">
-              Choisir
-            </a>
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%2012%20mois%20-%20249%20DH.%20ESSAI%2024h%20si%20possible%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">Choisir</a>
           </article>
         </div>
 
-        <div class="finebar">
-          <span>Test gratuit 24h</span>
-          <span>•</span>
-          <span>Activation rapide</span>
-          <span>•</span>
-          <span>Support</span>
+        <div class="finebar reveal">
+          <span>Essai 24h</span><span>•</span><span>Activation rapide</span><span>•</span><span>Support</span>
         </div>
       </div>
     </section>
 
-    <!-- HOW -->
-    <section id="how" class="section section--alt">
+    <!-- NEW SECTION: ESSAI -->
+    <section id="essai" class="section section--alt">
       <div class="wrap">
-        <header class="section__head">
-          <h2 class="h2">Process</h2>
-          <p class="muted">Clair, simple, sans prise de tête.</p>
+        <header class="section__head reveal">
+          <h2 class="h2">Demander un essai</h2>
+          <p class="muted">Cliquez sur “Je suis intéressé” et remplissez le mini-formulaire (10 secondes).</p>
         </header>
 
-        <div class="how">
-          <div class="how__item">
-            <div class="how__n">01</div>
-            <div class="how__t">Vous demandez un test</div>
-            <div class="muted">Vous indiquez votre appareil.</div>
+        <div class="ctaCard reveal">
+          <div class="ctaCard__left">
+            <div class="ctaCard__title">Essai gratuit 24h</div>
+            <div class="ctaCard__text muted">
+              On vous répond avec les étapes adaptées à votre appareil, puis vous testez.
+            </div>
           </div>
-          <div class="how__item">
-            <div class="how__n">02</div>
-            <div class="how__t">On vous guide</div>
-            <div class="muted">Étapes courtes, adaptées à votre cas.</div>
-          </div>
-          <div class="how__item">
-            <div class="how__n">03</div>
-            <div class="how__t">Activation</div>
-            <div class="muted">Si tout est OK, activation immédiate.</div>
+
+          <div class="ctaCard__right">
+            <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="essai-section">
+              Je suis intéressé
+            </button>
+            <a class="btn btn--ghost btn--lg"
+               href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20un%20ESSAI%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
+               rel="noopener">
+              WhatsApp direct
+            </a>
           </div>
         </div>
       </div>
@@ -182,14 +209,14 @@
     <!-- FAQ -->
     <section id="faq" class="section">
       <div class="wrap">
-        <header class="section__head">
+        <header class="section__head reveal">
           <h2 class="h2">FAQ</h2>
           <p class="muted">Réponses rapides.</p>
         </header>
 
-        <div class="faq">
+        <div class="faq reveal">
           <details>
-            <summary>Le test est-il vraiment gratuit ?</summary>
+            <summary>L’essai est-il vraiment gratuit ?</summary>
             <p>Oui. Vous testez 24h, puis vous décidez. Aucun paiement avant validation.</p>
           </details>
           <details>
@@ -197,61 +224,95 @@
             <p>En général 5–10 minutes après confirmation, selon l’appareil.</p>
           </details>
           <details>
-            <summary>Je ne suis pas à l’aise avec l’installation</summary>
+            <summary>Je ne suis pas à l’aise avec l’installation…</summary>
             <p>Pas de souci : on vous guide étape par étape (message ou vocal).</p>
           </details>
         </div>
 
-        <div class="cta">
+        <div class="bottomCta reveal">
           <div>
-            <div class="cta__t">Prêt à tester ?</div>
-            <div class="muted">Envoyez “TEST 24H” sur WhatsApp.</div>
+            <div class="bottomCta__t">Prêt à tester ?</div>
+            <div class="muted">Remplissez le formulaire et on s’occupe du reste.</div>
           </div>
-          <a class="btn btn--primary btn--lg"
-             id="waBottom"
-             href="https://wa.me/212772649507?text=Bonjour%2C%20je%20veux%20le%20TEST%2024h%20%E2%9C%85%20Mon%20appareil%20est%20%3A%20"
-             rel="noopener">
-            WhatsApp
-          </a>
+          <button class="btn btn--primary btn--lg js-open-modal" type="button" data-source="bottom-cta">
+            Je suis intéressé
+          </button>
         </div>
       </div>
     </section>
 
     <footer class="footer">
       <div class="wrap footer__inner">
-        <div class="footer__left">
-          <div class="muted">© <span id="year">2026</span> Pluton Shop</div>
-        </div>
+        <div class="muted">© <span id="year"></span> Pluton Shop</div>
         <div class="footer__links">
           <a href="#offres">Offres</a>
+          <a href="#essai">Essai</a>
           <a href="#faq">FAQ</a>
-          <a href="https://instagram.com/plutonshopma" rel="noopener">Instagram</a>
         </div>
       </div>
     </footer>
   </main>
 
-  <!-- Script optionnel: copier message + année auto -->
-  <script>
-    // Year
-    const y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
+  <!-- MODAL -->
+  <div class="modal" id="leadModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="1"></div>
 
-    // Copy message (safe)
-    const copyBtn = document.getElementById("copyBtn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", async () => {
-        const msg = "Bonjour, je veux le TEST 24h ✅";
-        try {
-          await navigator.clipboard.writeText(msg);
-          const old = copyBtn.textContent;
-          copyBtn.textContent = "Copié ✅";
-          setTimeout(() => (copyBtn.textContent = old), 1400);
-        } catch {
-          alert(msg);
-        }
-      });
-    }
-  </script>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" type="button" aria-label="Fermer" data-close="1">✕</button>
+
+      <div class="modal__head">
+        <div class="modal__kicker">Demande d’essai</div>
+        <h3 class="modal__title" id="modalTitle">Dites-nous juste l’essentiel</h3>
+        <p class="muted">On prépare votre essai 24h et on vous guide selon votre appareil.</p>
+      </div>
+
+      <form class="form" id="leadForm">
+        <div class="form__grid">
+          <label class="field">
+            <span class="field__label">Nom (optionnel)</span>
+            <input class="field__input" name="name" type="text" placeholder="Ex: Yassine" autocomplete="name" />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Votre appareil *</span>
+            <select class="field__input" name="device" required>
+              <option value="" selected disabled>Choisir…</option>
+              <option>Android TV / Box</option>
+              <option>Smart TV</option>
+              <option>Android (téléphone)</option>
+              <option>iPhone</option>
+              <option>PC / Laptop</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Durée souhaitée</span>
+            <select class="field__input" name="plan">
+              <option value="Essai 24h" selected>Essai 24h</option>
+              <option>1 mois (39 DH)</option>
+              <option>3 mois (99 DH)</option>
+              <option>6 mois (149 DH)</option>
+              <option>12 mois (249 DH)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Note (optionnel)</span>
+            <input class="field__input" name="note" type="text" placeholder="Ex: Je veux tester sports/films" />
+          </label>
+        </div>
+
+        <div class="form__hint muted">
+          En cliquant sur “Envoyer sur WhatsApp”, un message sera préparé automatiquement.
+        </div>
+
+        <button class="btn btn--primary btn--full btn--xl" type="submit">
+          Envoyer sur WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js?v=1"></script>
 </body>
 </html>
