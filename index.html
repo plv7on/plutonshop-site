@@ -4,742 +4,1223 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Pluton Shop — Accès Premium</title>
-  <meta name="description" content="Accès Premium : Sports • Films • Séries. Essai 24h. Activation rapide." />
-  <meta name="theme-color" content="#070909" />
-
+  <meta name="description" content="Accès Premium : Sports • Films • Séries. Essai 24h. Activation rapide. Support." />
+  <meta name="theme-color" content="#070a09" />
   <style>
     :root{
-      --bg:#060807;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.12);
-      --muted: rgba(255,255,255,.68);
-      --text:#ffffff;
-      --g1:#18f3a3;
-      --g2:#0bcf8c;
-      --shadow: 0 40px 90px rgba(0,0,0,.75);
+      --bg:#070a09;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.58);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.35);
       --radius: 22px;
       --radius2: 16px;
+
+      --g1:#0cf2a0;
+      --g2:#00d38f;
+      --g3:#16ffb0;
+
+      --btn: linear-gradient(135deg, rgba(12,242,160,1), rgba(0,211,143,1));
+      --btn2: linear-gradient(135deg, rgba(12,242,160,.18), rgba(0,211,143,.08));
+      --ring: 0 0 0 3px rgba(12,242,160,.18);
+      --max: 1120px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(24,243,163,.14), transparent 55%),
-        radial-gradient(900px 500px at 90% 10%, rgba(11,207,140,.12), transparent 55%),
-        linear-gradient(180deg, #060807, #040605);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
       overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1080px; margin:0 auto; padding: 18px 16px 60px}
 
-    /* Top bar */
+    /* Background (stable & consistent on iPhone) */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      background:
+        radial-gradient(1200px 600px at 20% 12%, rgba(12,242,160,.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 18%, rgba(0,211,143,.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(12,242,160,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%, rgba(0,0,0,.22));
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      width: min(var(--max), calc(100% - 34px));
+      margin: 0 auto;
+    }
+
+    /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:30;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(6,8,7,.66);
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7,10,9,.78), rgba(7,10,9,.55));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .topbar__inner{
-      max-width:1080px; margin:0 auto; padding:12px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    .topbar__row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:780; letter-spacing:.3px}
-    .dot{
-      width:14px; height:14px; border-radius:6px;
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      box-shadow: 0 10px 25px rgba(24,243,163,.18);
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 180px;
     }
-    .brand b{color:#bfffe9}
-    .nav{display:flex; gap:10px; align-items:center}
-
-    .chip{
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      border-radius:999px;
-      font-weight:700;
-      color: rgba(255,255,255,.92);
-      transition:.18s transform ease, .18s background ease;
-      user-select:none;
-    }
-    .chip:active{transform:scale(.98)}
-    .chip--primary{
-      border:none;
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      color:#00110a;
-      box-shadow: 0 18px 40px rgba(11,207,140,.22);
-      cursor:pointer;
-    }
-
-    /* Hero */
-    .hero{padding-top:22px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    .card{
-      border:1px solid var(--border);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: 0 18px 55px rgba(0,0,0,.35);
-    }
-    .heroMain{padding:26px}
-    .eyebrow{
-      display:flex; gap:10px; align-items:center;
-      font-size:.92rem;
-      color: var(--muted);
-      margin:0 0 10px;
-      flex-wrap:wrap;
-    }
-    .badge{
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.85);
-      font-weight:800;
-      font-size:.82rem;
-    }
-    h1{
-      margin:0 0 8px;
-      font-size: clamp(30px, 3.6vw, 54px);
-      line-height:1.05;
-      letter-spacing:-.9px;
-    }
-    .sub{
-      margin:0 0 14px;
-      color: rgba(255,255,255,.86);
-      font-size: 1.05rem;
-    }
-    .lead{
-      margin:0 0 18px;
-      color: var(--muted);
-      line-height:1.6;
-      font-size:1rem;
-      max-width: 60ch;
-    }
-
-    .actions{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{
-      border-radius:999px;
-      padding:14px 18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.92);
-      font-weight:800;
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      cursor:pointer;
-      transition: .18s transform ease, .18s box-shadow ease, .18s background ease;
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-    }
-    .btn:active{transform: scale(.98)}
-    .btn--primary{
-      border:none;
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      color:#00110a;
-      box-shadow: 0 18px 40px rgba(11,207,140,.22);
-    }
-    .meta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .pill{
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.80);
-      font-weight:800;
-      font-size:.9rem;
-    }
-
-    /* Side */
-    .heroSide{padding:18px}
-    .sideTitle{font-weight:900; margin:0 0 8px}
-    .sideSmall{margin:0 0 14px; color:var(--muted); line-height:1.55}
-    .priceRow{
-      display:flex; align-items:baseline; justify-content:space-between;
-      padding:14px 14px;
-      border-radius: 16px;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.10);
-      margin: 10px 0 12px;
-    }
-    .priceRow strong{font-size: 1.7rem}
-    .sideNote{margin:0 0 14px; color:rgba(255,255,255,.75); line-height:1.55}
-    .sideFooter{margin-top:14px; color: rgba(255,255,255,.75); font-weight:800; font-size:.92rem; display:flex; gap:8px; align-items:center}
-    .tick{width:18px; height:18px; border-radius:6px; background: rgba(24,243,163,.16); display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(24,243,163,.24)}
-
-    /* Sections */
-    .section{margin-top:26px}
-    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:0 0 12px}
-    h2{margin:0; font-size: 1.55rem; letter-spacing:-.2px}
-    .muted{color:var(--muted); margin:0}
-    .anchor{scroll-margin-top:90px}
-
-    /* OFFERS SLIDER */
-    .offersWrap{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      border-radius: var(--radius);
-      padding: 14px;
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(12,242,160,.22), rgba(0,211,143,.10));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      position: relative;
       overflow:hidden;
     }
-    .offersSlider{
+    .logo::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(12,242,160,.55), transparent 55%);
+      transform: rotate(12deg);
+      opacity:.7;
+    }
+    .brand__text{
       display:flex;
-      gap:12px;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand__name{
+      font-weight: 850;
+      letter-spacing: .5px;
+    }
+    .brand__name span{
+      color: var(--g2);
+      margin-left: 6px;
+    }
+    .brand__small{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 3px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .pill{
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
+      font-weight: 650;
+      font-size: 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .pill:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.055); }
+    .pill:active{ transform: translateY(0px) scale(.99); }
+    .pill--cta{
+      border: 0;
+      background: var(--btn);
+      color: #062016;
+      box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(12,242,160,.22) inset;
+    }
+    .pill--cta:hover{ filter: brightness(1.03); }
+
+    /* Hero */
+    .hero{
+      padding: 34px 0 22px;
+    }
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 920px){
+      .hero__grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset: -1px;
+      background:
+        radial-gradient(520px 240px at 18% 18%, rgba(12,242,160,.14), transparent 60%),
+        radial-gradient(460px 200px at 85% 10%, rgba(0,211,143,.10), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .card__inner{
+      position: relative;
+      padding: 22px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      color: rgba(255,255,255,.78);
+      font-weight: 650;
+      font-size: 13px;
+      letter-spacing: .2px;
+      margin: 0 0 14px;
+    }
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(12,242,160,1);
+      box-shadow: 0 0 0 5px rgba(12,242,160,.14);
+      flex: 0 0 auto;
+    }
+    h1{
+      margin: 0;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.02;
+      letter-spacing: -0.6px;
+    }
+    .sub{
+      margin: 10px 0 12px;
+      font-size: 16px;
+      color: rgba(255,255,255,.76);
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: rgba(255,255,255,.74);
+      font-size: 15.5px;
+      line-height: 1.5;
+      max-width: 56ch;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.92);
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 750;
+      letter-spacing:.2px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height: 46px;
+      transition: transform .18s ease, filter .18s ease, border-color .18s ease, background .18s ease;
+      user-select:none;
+      cursor:pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+    .btn:focus-visible{ outline:none; box-shadow: var(--ring); }
+
+    .btn--primary{
+      border: 0;
+      background: var(--btn);
+      color: #062016;
+      box-shadow: 0 16px 36px rgba(0,0,0,.45), 0 0 0 1px rgba(12,242,160,.22) inset;
+    }
+    .btn--primary:hover{ filter: brightness(1.03); }
+
+    .btn--ghost{
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .chips{
+      margin-top: 18px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .chip{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.09);
+      color: rgba(255,255,255,.78);
+      font-weight: 650;
+      font-size: 13px;
+    }
+
+    /* Reco panel */
+    .reco .title{
+      font-weight: 850;
+      font-size: 16px;
+      letter-spacing: .2px;
+      margin: 0 0 10px;
+    }
+    .reco .note{
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .pricebox{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      margin-bottom: 12px;
+    }
+    .pricebox .left{
+      color: rgba(255,255,255,.76);
+      font-weight: 700;
+    }
+    .pricebox .right{
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing:.3px;
+    }
+    .reco .smallok{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(255,255,255,.78);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    .check{
+      width: 20px;
+      height: 20px;
+      border-radius: 8px;
+      background: rgba(12,242,160,.16);
+      border: 1px solid rgba(12,242,160,.25);
+      display:grid;
+      place-items:center;
+      color: rgba(12,242,160,1);
+      font-weight: 900;
+    }
+
+    /* Sections */
+    .section{ padding: 26px 0; }
+    .section__head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .h2{
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+    .muted{ color: var(--muted2); }
+    .hint{
+      color: rgba(255,255,255,.62);
+      font-weight: 650;
+      font-size: 13px;
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+
+    /* Offers slider */
+    .slider{
+      position: relative;
+    }
+    .track{
+      display:flex;
+      gap: 12px;
       overflow-x:auto;
-      padding: 6px 2px 12px;
+      padding: 10px 2px 14px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    .offersSlider::-webkit-scrollbar{height:8px}
-    .offersSlider::-webkit-scrollbar-thumb{background: rgba(255,255,255,.14); border-radius:999px}
-    .offerCard{
+    .track::-webkit-scrollbar{ display:none; }
+    .offer{
+      flex: 0 0 min(320px, 78vw);
       scroll-snap-align: start;
-      flex: 0 0 min(320px, 85%);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: 18px;
-      padding:16px;
-      position:relative;
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      position: relative;
+      overflow:hidden;
     }
-    .offerCard--best{
-      border-color: rgba(24,243,163,.35);
-      background: linear-gradient(180deg, rgba(24,243,163,.10), rgba(255,255,255,.05));
+    .offer::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(520px 240px at 10% 25%, rgba(12,242,160,.12), transparent 55%),
+        radial-gradient(420px 220px at 85% 5%, rgba(0,211,143,.10), transparent 55%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .offer__in{
+      position: relative;
+      padding: 18px;
     }
     .tag{
-      position:absolute; top:12px; right:12px;
-      padding:6px 10px; border-radius:999px;
-      background: rgba(24,243,163,.18);
-      border: 1px solid rgba(24,243,163,.30);
-      font-weight:900; font-size:.78rem;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.78);
+      font-weight: 750;
+      font-size: 13px;
     }
-    .offerTop{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
-    .offerName{margin:0; font-weight:900; font-size:1.1rem}
-    .offerDesc{margin:8px 0 14px; color: rgba(255,255,255,.72); line-height:1.5}
-    .bigPrice{
-      font-weight:950;
-      font-size: 2.1rem;
-      letter-spacing:-.4px;
-      margin: 8px 0 2px;
+    .tag--best{
+      background: rgba(12,242,160,.14);
+      border-color: rgba(12,242,160,.22);
+      color: rgba(255,255,255,.90);
     }
-    .bigPrice span{font-size:.95rem; color: rgba(255,255,255,.75); font-weight:850}
-    .offerCTA{display:flex; gap:10px; margin-top:12px}
-    .offerCTA .btn{width:100%}
-
-    .hintRow{
-      display:flex; align-items:center; justify-content:space-between;
+    .offer h3{
+      margin: 12px 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    .bigprice{
+      display:flex;
+      align-items:baseline;
       gap:10px;
-      margin-top:10px;
-      color: rgba(255,255,255,.7);
-      font-weight:750;
-      font-size:.9rem;
+      margin: 10px 0 12px;
     }
-    .dots{display:flex; gap:6px; opacity:.9}
-    .dot2{width:6px; height:6px; border-radius:999px; background: rgba(255,255,255,.28)}
-    .dot2.on{background: rgba(24,243,163,.65)}
+    .bigprice .n{
+      font-size: 44px;
+      font-weight: 950;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .bigprice .u{
+      font-weight: 900;
+      color: rgba(255,255,255,.72);
+    }
+    .offer p{
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.45;
+    }
 
-    /* Process */
-    .steps{
+    .offer .btn{ width:100%; }
+    .dots{
+      display:flex;
+      gap: 8px;
+      justify-content:flex-end;
+      padding: 6px 2px 0;
+    }
+    .dot2{
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.22);
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .18s ease, background .18s ease;
+    }
+    .dot2.is-on{
+      background: rgba(12,242,160,.85);
+      border-color: rgba(12,242,160,.20);
+      transform: scale(1.15);
+    }
+
+    /* How */
+    .how{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+      gap: 12px;
+    }
+    @media (max-width: 920px){
+      .how{ grid-template-columns: 1fr; }
     }
     .step{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: 18px;
-      padding:16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      padding: 18px;
     }
-    .n{
-      width:38px; height:38px; border-radius:14px;
-      display:inline-flex; align-items:center; justify-content:center;
-      font-weight:950;
-      background: rgba(24,243,163,.14);
-      border:1px solid rgba(24,243,163,.22);
-      margin-bottom:10px;
+    .numb{
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      background: rgba(12,242,160,.12);
+      border: 1px solid rgba(12,242,160,.20);
+      font-weight: 950;
+      color: rgba(255,255,255,.92);
+      margin-bottom: 10px;
     }
-    .t{font-weight:900; margin:0 0 6px}
-    .p{margin:0; color: rgba(255,255,255,.72); line-height:1.5}
+    .step .t{
+      font-weight: 900;
+      letter-spacing: -.2px;
+      margin-bottom: 6px;
+    }
 
     /* FAQ */
     .faq{
       display:grid;
-      gap:10px;
+      gap: 10px;
     }
     details{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: 16px;
-      padding: 12px 14px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
     }
     summary{
-      cursor:pointer;
-      font-weight:900;
       list-style:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0; color: rgba(255,255,255,.72); line-height:1.55}
-
-    /* CTA */
-    .cta{
-      margin-top:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(24,243,163,.10), rgba(255,255,255,.05));
-      border-radius: var(--radius);
-      padding:16px;
+      cursor:pointer;
+      padding: 16px 16px;
+      font-weight: 850;
+      color: rgba(255,255,255,.92);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap: 14px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary .caret{
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.10);
+      transition: transform .2s ease;
+      flex: 0 0 auto;
+    }
+    details[open] summary .caret{ transform: rotate(180deg); }
+    details .ans{
+      padding: 0 16px 16px;
+      color: rgba(255,255,255,.70);
+      line-height: 1.55;
+    }
+
+    /* CTA strip */
+    .cta{
+      margin-top: 14px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(12,242,160,.10), rgba(255,255,255,.04));
+      border: 1px solid rgba(12,242,160,.18);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
       flex-wrap:wrap;
     }
-    .cta b{font-weight:950}
-    .cta .btn{min-width: 220px}
+    .cta .t{
+      font-weight: 950;
+      letter-spacing: -.2px;
+      margin: 0 0 3px;
+    }
+    .cta .s{ margin:0; color: rgba(255,255,255,.70); }
 
     /* Footer */
-    footer{
-      margin-top:32px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.75);
+    .footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top: 20px;
+    }
+    .footer__row{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
+      align-items:center;
+      gap: 12px;
       flex-wrap:wrap;
     }
-    .links{display:flex; gap:14px; font-weight:850; color: rgba(255,255,255,.78)}
+    .links{
+      display:flex;
+      gap: 14px;
+      flex-wrap:wrap;
+      color: rgba(255,255,255,.70);
+      font-weight: 650;
+    }
+    .links a:hover{ color: rgba(255,255,255,.92); }
 
-    /* MODAL (IMPORTANT: hidden by default) */
+    /* Modal (fix: ONLY opens via buttons, not by clicking the page) */
     .modal{
-      position:fixed; inset:0;
-      z-index:999;
-      display:none;          /* ✅ default hidden */
-      padding:16px;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display:none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
     }
-    .modal.is-open{
-      display:flex;          /* ✅ only visible when open */
-      align-items:center;
-      justify-content:center;
-    }
-    .backdrop{
-      position:absolute; inset:0;
-      background: rgba(0,0,0,.65);
+    .modal.is-open{ display:flex; }
+    .modal__backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.62);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      animation: fadeIn .22s ease forwards;
     }
-    .dialog{
-      position:relative;
-      width: min(560px, 100%);
-      max-height: 80vh;
-      overflow:auto;
-      -webkit-overflow-scrolling: touch;
-      background: linear-gradient(180deg, #0b1412, #060a09);
-      border: 1px solid rgba(255,255,255,.12);
+    .modal__panel{
+      position: relative;
+      width: min(640px, 100%);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      animation: pop .28s cubic-bezier(.2,.9,.2,1) both;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 30px 90px rgba(0,0,0,.65);
+      overflow:hidden;
+      transform: translateY(14px) scale(.98);
+      opacity: 0;
+      animation: popIn .26s cubic-bezier(.2,.9,.2,1) forwards;
     }
-    @keyframes pop{
-      from{transform: translateY(18px) scale(.97); opacity:0}
-      to{transform: translateY(0) scale(1); opacity:1}
+    .modal__panel::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(700px 260px at 20% 0%, rgba(12,242,160,.18), transparent 55%),
+        radial-gradient(600px 260px at 90% 10%, rgba(0,211,143,.12), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
     }
-    .close{
-      position:absolute; top:12px; right:12px;
-      width:36px; height:36px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.07);
-      color:#fff;
-      font-size:18px;
-      cursor:pointer;
+    .modal__in{
+      position: relative;
+      padding: 18px;
     }
-    .formTitle{margin:6px 0 6px; font-size:1.35rem; font-weight:950}
-    .formDesc{margin:0 0 14px; color: rgba(255,255,255,.70); line-height:1.5}
-    form{display:grid; grid-template-columns: 1fr; gap:12px}
-    input, select, textarea{
-      width:100%;
-      padding: 14px 16px;
+    .modal__top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .modal__top h3{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing: -.2px;
+    }
+    .modal__top p{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.68);
+      line-height: 1.45;
+      font-size: 13.5px;
+    }
+    .xbtn{
+      width: 40px;
+      height: 40px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.06);
-      color:#fff;
-      font-size: 15px;
-      outline:none;
-    }
-    input::placeholder, textarea::placeholder{color: rgba(255,255,255,.5)}
-    textarea{min-height:82px; resize:none}
-    .submit{
-      padding: 16px 18px;
-      border-radius: 999px;
-      border:none;
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      color:#00110a;
-      font-weight:950;
-      font-size: 1rem;
-      box-shadow: 0 18px 40px rgba(11,207,140,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.92);
+      font-weight: 900;
       cursor:pointer;
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+      transition: transform .18s ease, border-color .18s ease;
     }
-    .miniNote{margin:8px 0 0; text-align:center; color: rgba(255,255,255,.6); font-size:.85rem}
+    .xbtn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
+    .xbtn:active{ transform: translateY(0px) scale(.99); }
 
-    html.modal-open, body.modal-open{overflow:hidden;}
+    .form{
+      display:grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 720px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+    label{
+      font-size: 12.5px;
+      font-weight: 800;
+      color: rgba(255,255,255,.78);
+      display:block;
+      margin-bottom: 6px;
+    }
+    input, select, textarea{
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.24);
+      color: rgba(255,255,255,.92);
+      outline:none;
+      transition: box-shadow .18s ease, border-color .18s ease;
+      font-size: 14px;
+    }
+    textarea{ min-height: 92px; resize: vertical; }
+    input:focus, select:focus, textarea:focus{
+      box-shadow: var(--ring);
+      border-color: rgba(12,242,160,.30);
+    }
+    .help{
+      color: rgba(255,255,255,.62);
+      font-size: 12.5px;
+      line-height: 1.45;
+      margin-top: -2px;
+    }
+    .form__actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 4px;
+    }
+    .form__actions .btn{ flex: 1 1 180px; }
+    .tiny{
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      line-height: 1.45;
+      margin: 0;
+    }
 
-    /* Mobile */
-    @media (max-width: 920px){
-      .heroGrid{grid-template-columns: 1fr}
-      .steps{grid-template-columns: 1fr}
-      .nav{gap:8px}
-      .chip{padding:10px 12px}
+    /* Reveal animations */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .reveal.is-in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes popIn{
+      to{ transform: translateY(0) scale(1); opacity: 1; }
+    }
+    @keyframes fadeIn{
+      to{ opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .reveal{ opacity:1; transform:none; transition:none; }
+      .modal__backdrop, .modal__panel{ animation:none; opacity:1; transform:none; }
+      .btn, .pill{ transition:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="topbar__inner">
+  <header class="topbar">
+    <div class="wrap topbar__row">
       <div class="brand">
-        <span class="dot"></span>
-        <span>PLUTON <b>SHOP</b></span>
+        <!-- Remplace ce bloc par ton logo plus tard (voir note en bas) -->
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand__text">
+          <div class="brand__name">PLUTON <span>SHOP</span></div>
+          <div class="brand__small">Accès Premium • Essai 24h</div>
+        </div>
       </div>
-      <div class="nav">
-        <a class="chip" href="https://instagram.com/plutonshopma" target="_blank" rel="noopener">Instagram</a>
-        <button class="chip chip--primary" data-open-modal type="button">Je suis intéressé</button>
-      </div>
+
+      <nav class="nav" aria-label="Navigation">
+        <a class="pill" href="#offres">Offres</a>
+        <button class="pill pill--cta" type="button" data-open-modal>
+          Je suis intéressé
+        </button>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="wrap">
-    <!-- HERO -->
+  <main>
     <section class="hero">
-      <div class="heroGrid">
-        <div class="card heroMain">
-          <p class="eyebrow">
-            <span class="badge">Essai 24h</span>
-            <span>Activation rapide • Support</span>
-          </p>
+      <div class="wrap hero__grid">
+        <div class="card reveal">
+          <div class="card__inner">
+            <div class="eyebrow"><span class="dot"></span>Essai 24h • Activation rapide • Support</div>
+            <h1>Accès Premium</h1>
+            <div class="sub">Sports • Films • Séries</div>
+            <p class="lead">
+              Dites-nous votre appareil (TV / Android / iPhone / PC) et on vous guide en quelques minutes.
+            </p>
 
-          <h1>Accès Premium</h1>
-          <p class="sub">Sports • Films • Séries</p>
+            <div class="actions">
+              <button class="btn btn--primary" type="button" data-open-modal>
+                Demander un essai
+              </button>
+              <a class="btn btn--ghost" href="#offres">Voir les offres</a>
+            </div>
 
-          <p class="lead">
-            Dites-nous votre appareil (TV / Android / iPhone / PC). On vous guide en quelques minutes.
-          </p>
-
-          <div class="actions">
-            <button class="btn btn--primary" data-open-modal type="button">Demander un essai</button>
-            <a class="btn" href="#offres">Voir les offres</a>
-          </div>
-
-          <div class="meta">
-            <div class="pill">Installation guidée</div>
-            <div class="pill">Multi-appareils</div>
-            <div class="pill">Support WhatsApp</div>
+            <div class="chips" aria-label="Avantages">
+              <div class="chip">Installation guidée</div>
+              <div class="chip">Multi-appareils</div>
+              <div class="chip">Support WhatsApp</div>
+            </div>
           </div>
         </div>
 
-        <aside class="card heroSide">
-          <div class="sideTitle">Recommandé</div>
-          <p class="sideSmall">Le choix le plus simple pour être tranquille.</p>
+        <aside class="card reco reveal">
+          <div class="card__inner">
+            <div class="title">Recommandé</div>
+            <p class="note">Le choix le plus simple pour être tranquille.</p>
 
-          <div class="priceRow">
-            <span>12 mois</span>
-            <strong>249 DH</strong>
-          </div>
+            <div class="pricebox">
+              <div class="left">12 mois</div>
+              <div class="right">249 DH</div>
+            </div>
 
-          <p class="sideNote">Vous pouvez commencer par <b>1 mois</b> si vous préférez tester.</p>
+            <p class="note">Vous pouvez commencer par <strong>1 mois</strong> si vous préférez tester.</p>
 
-          <button class="btn btn--primary" data-open-modal type="button" style="width:100%">TEST 24H</button>
+            <div class="actions">
+              <button class="btn btn--primary" type="button" data-open-modal>
+                Essai 24h
+              </button>
+              <button class="btn btn--ghost" type="button" id="copyMsg">
+                Copier le message
+              </button>
+            </div>
 
-          <div class="sideFooter">
-            <span class="tick">✓</span>
-            <span>Test avant paiement</span>
+            <div class="smallok">
+              <span class="check">✓</span>
+              <span>Test avant paiement</span>
+            </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- OFFRES (SLIDER) -->
-    <section id="offres" class="section anchor">
-      <div class="sectionHead">
-        <h2>Offres</h2>
-        <p class="muted">Faites glisser → pour voir les prix.</p>
-      </div>
-
-      <div class="offersWrap">
-        <div class="offersSlider" id="offersSlider" aria-label="Offres (carousel)">
-          <article class="offerCard">
-            <div class="offerTop">
-              <h3 class="offerName">1 mois</h3>
-            </div>
-            <div class="bigPrice">39 <span>DH</span></div>
-            <p class="offerDesc">Idéal pour commencer et tester tranquillement.</p>
-            <div class="offerCTA">
-              <button class="btn" type="button" data-plan="1 mois">Choisir</button>
-            </div>
-          </article>
-
-          <article class="offerCard">
-            <div class="offerTop">
-              <h3 class="offerName">3 mois</h3>
-            </div>
-            <div class="bigPrice">99 <span>DH</span></div>
-            <p class="offerDesc">Le meilleur compromis pour la plupart des clients.</p>
-            <div class="offerCTA">
-              <button class="btn" type="button" data-plan="3 mois">Choisir</button>
-            </div>
-          </article>
-
-          <article class="offerCard">
-            <div class="offerTop">
-              <h3 class="offerName">6 mois</h3>
-            </div>
-            <div class="bigPrice">149 <span>DH</span></div>
-            <p class="offerDesc">Pour être tranquille et profiter sans stress.</p>
-            <div class="offerCTA">
-              <button class="btn" type="button" data-plan="6 mois">Choisir</button>
-            </div>
-          </article>
-
-          <article class="offerCard offerCard--best">
-            <span class="tag">TOP</span>
-            <div class="offerTop">
-              <h3 class="offerName">12 mois</h3>
-            </div>
-            <div class="bigPrice">249 <span>DH</span></div>
-            <p class="offerDesc">La meilleure valeur. Recommandé.</p>
-            <div class="offerCTA">
-              <button class="btn btn--primary" type="button" data-plan="12 mois">Choisir</button>
-            </div>
-          </article>
+    <section id="offres" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 class="h2">Offres</h2>
+            <div class="muted">Faites glisser → pour voir les prix.</div>
+          </div>
+          <div class="hint">Conseil : commencez par l’essai 24h</div>
         </div>
 
-        <div class="hintRow">
-          <span>Glissez pour comparer</span>
-          <div class="dots" id="dots">
-            <span class="dot2 on"></span><span class="dot2"></span><span class="dot2"></span><span class="dot2"></span>
+        <div class="slider reveal">
+          <div class="track" id="offerTrack" aria-label="Offres (défilement horizontal)">
+            <article class="offer" aria-label="Offre 1 mois">
+              <div class="offer__in">
+                <div class="tag"><span class="dot"></span>Pour commencer</div>
+                <h3>1 mois</h3>
+                <div class="bigprice"><div class="n">39</div><div class="u">DH</div></div>
+                <p>Idéal pour tester tranquillement avant de prendre une durée plus longue.</p>
+                <button class="btn btn--ghost pick" type="button" data-plan="1 mois - 39 DH">Choisir</button>
+              </div>
+            </article>
+
+            <article class="offer" aria-label="Offre 3 mois">
+              <div class="offer__in">
+                <div class="tag"><span class="dot"></span>Bon compromis</div>
+                <h3>3 mois</h3>
+                <div class="bigprice"><div class="n">99</div><div class="u">DH</div></div>
+                <p>La meilleure option pour la plupart des clients (prix + confort).</p>
+                <button class="btn btn--ghost pick" type="button" data-plan="3 mois - 99 DH">Choisir</button>
+              </div>
+            </article>
+
+            <article class="offer" aria-label="Offre 6 mois">
+              <div class="offer__in">
+                <div class="tag"><span class="dot"></span>Tranquillité</div>
+                <h3>6 mois</h3>
+                <div class="bigprice"><div class="n">149</div><div class="u">DH</div></div>
+                <p>Pour être tranquille et éviter de renouveler souvent.</p>
+                <button class="btn btn--ghost pick" type="button" data-plan="6 mois - 149 DH">Choisir</button>
+              </div>
+            </article>
+
+            <article class="offer" aria-label="Offre 12 mois (Top)">
+              <div class="offer__in">
+                <div class="tag tag--best"><span class="dot"></span>TOP • Meilleure valeur</div>
+                <h3>12 mois</h3>
+                <div class="bigprice"><div class="n">249</div><div class="u">DH</div></div>
+                <p>Le meilleur rapport prix/durée. Recommandé si l’essai est validé.</p>
+                <button class="btn btn--primary pick" type="button" data-plan="12 mois - 249 DH">Choisir</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="dots" aria-hidden="true" id="dots">
+            <span class="dot2 is-on"></span><span class="dot2"></span><span class="dot2"></span><span class="dot2"></span>
           </div>
         </div>
       </div>
-
-      <div class="cta">
-        <div>
-          <div style="font-weight:950;font-size:1.05rem">Prêt à tester ?</div>
-          <div class="muted">Remplissez le formulaire et on vous guide selon votre appareil.</div>
-        </div>
-        <button class="btn btn--primary" data-open-modal type="button">Demander un essai</button>
-      </div>
     </section>
 
-    <!-- PROCESS -->
-    <section id="process" class="section anchor">
-      <div class="sectionHead">
-        <h2>Process</h2>
-        <p class="muted">Simple, rapide, guidé.</p>
-      </div>
+    <section id="process" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 class="h2">Process</h2>
+            <div class="muted">Simple, rapide, guidé.</div>
+          </div>
+        </div>
 
-      <div class="steps">
-        <div class="step">
-          <div class="n">01</div>
-          <p class="t">Vous demandez un essai</p>
-          <p class="p">Vous indiquez votre appareil (TV / Android / iPhone / PC).</p>
-        </div>
-        <div class="step">
-          <div class="n">02</div>
-          <p class="t">On vous guide</p>
-          <p class="p">Étapes courtes, adaptées à votre cas (message/vocal).</p>
-        </div>
-        <div class="step">
-          <div class="n">03</div>
-          <p class="t">Activation</p>
-          <p class="p">Si tout est OK, activation immédiate selon l’offre choisie.</p>
+        <div class="how">
+          <div class="step reveal">
+            <div class="numb">01</div>
+            <div class="t">Vous demandez un essai</div>
+            <div class="muted">Vous indiquez votre appareil et ce que vous voulez tester.</div>
+          </div>
+          <div class="step reveal">
+            <div class="numb">02</div>
+            <div class="t">On vous guide</div>
+            <div class="muted">Étapes courtes, adaptées à votre cas (message ou vocal).</div>
+          </div>
+          <div class="step reveal">
+            <div class="numb">03</div>
+            <div class="t">Activation</div>
+            <div class="muted">Si tout est OK, activation immédiate selon l’offre choisie.</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="section anchor">
-      <div class="sectionHead">
-        <h2>FAQ</h2>
-        <p class="muted">Réponses rapides.</p>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>L’essai est-il vraiment gratuit ?</summary>
-          <p>Oui. Vous testez, puis vous décidez. Aucun paiement avant validation.</p>
-        </details>
-        <details>
-          <summary>Combien de temps pour activer ?</summary>
-          <p>En général 5–10 minutes après confirmation, selon l’appareil.</p>
-        </details>
-        <details>
-          <summary>Je ne suis pas à l’aise avec l’installation</summary>
-          <p>Pas de souci : on vous guide étape par étape.</p>
-        </details>
-      </div>
-
-      <div class="cta">
-        <div>
-          <div style="font-weight:950;font-size:1.05rem">Besoin d’aide maintenant ?</div>
-          <div class="muted">Cliquez et envoyez votre demande en 10 secondes.</div>
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 class="h2">FAQ</h2>
+            <div class="muted">Réponses rapides.</div>
+          </div>
         </div>
-        <button class="btn btn--primary" data-open-modal type="button">Je suis intéressé</button>
+
+        <div class="faq reveal">
+          <details>
+            <summary>
+              <span>L’essai est-il vraiment gratuit ?</span>
+              <span class="caret">⌄</span>
+            </summary>
+            <div class="ans">Oui. Vous testez 24h, puis vous décidez. Aucun paiement avant validation.</div>
+          </details>
+
+          <details>
+            <summary>
+              <span>Combien de temps pour activer ?</span>
+              <span class="caret">⌄</span>
+            </summary>
+            <div class="ans">En général 5–10 minutes après votre retour, selon l’appareil.</div>
+          </details>
+
+          <details>
+            <summary>
+              <span>Je ne suis pas à l’aise avec l’installation</span>
+              <span class="caret">⌄</span>
+            </summary>
+            <div class="ans">Pas de souci : on vous guide étape par étape (message ou vocal).</div>
+          </details>
+        </div>
+
+        <div class="cta reveal">
+          <div>
+            <div class="t">Besoin d’aide maintenant ?</div>
+            <p class="s">Cliquez et envoyez votre demande en 10 secondes.</p>
+          </div>
+          <button class="btn btn--primary" type="button" data-open-modal>Je suis intéressé</button>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <div>© <span id="year"></span> Pluton Shop</div>
-      <div class="links">
-        <a href="#offres">Offres</a>
-        <a href="#process">Process</a>
-        <a href="#faq">FAQ</a>
+    <footer class="footer">
+      <div class="wrap footer__row">
+        <div class="muted">© <span id="year"></span> Pluton Shop</div>
+        <div class="links">
+          <a href="#offres">Offres</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
+        </div>
       </div>
     </footer>
-  </div>
+  </main>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal">
-    <div class="backdrop" data-close-modal></div>
+  <!-- MODAL (formulaire) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" id="backdrop" aria-hidden="true"></div>
 
-    <div class="dialog" role="dialog" aria-modal="true" aria-label="Demande d'essai">
-      <button class="close" type="button" data-close-modal>✕</button>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__in">
+        <div class="modal__top">
+          <div>
+            <h3 id="modalTitle">Demande d’essai</h3>
+            <p>On prépare votre essai 24h et on vous guide selon votre appareil.</p>
+          </div>
+          <button class="xbtn" type="button" id="closeModal" aria-label="Fermer">✕</button>
+        </div>
 
-      <div class="formTitle">Demande d’essai</div>
-      <p class="formDesc">Dites-nous juste l’essentiel. Le message sera préparé automatiquement.</p>
+        <form class="form" id="leadForm">
+          <div class="grid2">
+            <div>
+              <label for="name">Nom (optionnel)</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Ex : Yassine" />
+            </div>
+            <div>
+              <label for="device">Votre appareil *</label>
+              <select id="device" name="device" required>
+                <option value="" selected disabled>Choisir…</option>
+                <option>Android (Téléphone/Tablette)</option>
+                <option>Android TV / TV Box</option>
+                <option>Smart TV (Samsung / LG / autre)</option>
+                <option>PC / Laptop</option>
+                <option>iPhone / iPad</option>
+              </select>
+            </div>
+          </div>
 
-      <form id="trialForm">
-        <input name="name" placeholder="Nom (optionnel)" autocomplete="name" />
+          <div class="grid2">
+            <div>
+              <label for="duration">Durée souhaitée</label>
+              <select id="duration" name="duration">
+                <option>Essai 24h</option>
+                <option>1 mois</option>
+                <option>3 mois</option>
+                <option>6 mois</option>
+                <option>12 mois</option>
+              </select>
+            </div>
+            <div>
+              <label for="plan">Offre (si déjà choisie)</label>
+              <input id="plan" name="plan" placeholder="Ex : 3 mois - 99 DH" />
+            </div>
+          </div>
 
-        <select name="device" required>
-          <option value="">Votre appareil</option>
-          <option>Android TV</option>
-          <option>Smart TV</option>
-          <option>Android (téléphone)</option>
-          <option>iPhone</option>
-          <option>PC</option>
-        </select>
+          <div>
+            <label for="note">Note (optionnel)</label>
+            <textarea id="note" name="note" placeholder="Ex : je veux tester sports / films…"></textarea>
+            <div class="help">En cliquant sur “Envoyer sur WhatsApp”, un message sera préparé automatiquement.</div>
+          </div>
 
-        <select name="duration" id="duration">
-          <option>Essai 24h</option>
-          <option>1 mois</option>
-          <option>3 mois</option>
-          <option>6 mois</option>
-          <option>12 mois</option>
-        </select>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Envoyer sur WhatsApp</button>
+            <button class="btn btn--ghost" type="button" id="copyFormMsg">Copier le message</button>
+          </div>
 
-        <textarea name="note" placeholder="Note (optionnel) — ex : je veux surtout sports / films…"></textarea>
-
-        <button class="submit" type="submit">Envoyer sur WhatsApp</button>
-      </form>
-
-      <p class="miniNote">Support rapide • Activation guidée</p>
+          <p class="tiny">Astuce : si vous avez une TV/Box, indiquez le modèle (ex : Mi Box, TCL, Samsung…).</p>
+        </form>
+      </div>
     </div>
   </div>
 
   <script>
-    // ⚠️ Mets ton numéro ici sans +
-    const PHONE = "212772649507";
+    // ====== CONFIG ======
+    const WHATSAPP_NUMBER = "212772649507"; // sans +, sans espaces
 
-    const modal = document.getElementById("modal");
-    const form = document.getElementById("trialForm");
-    const durationSelect = document.getElementById("duration");
+    // ====== UTIL ======
+    const $ = (s, root=document) => root.querySelector(s);
+    const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
 
-    // ✅ OUVRIR SEULEMENT via boutons dédiés
-    document.querySelectorAll("[data-open-modal]").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        openModal();
-      });
-    });
-
-    // ✅ FERMER SEULEMENT via close/backdrop
-    document.querySelectorAll("[data-close-modal]").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        closeModal();
-      });
-    });
-
-    function openModal(){
-      modal.classList.add("is-open");
-      document.documentElement.classList.add("modal-open");
-      document.body.classList.add("modal-open");
+    function buildMessage(payload){
+      const lines = [];
+      lines.push("Bonjour, je veux un essai 24h.");
+      if (payload.plan) lines.push("Offre : " + payload.plan);
+      if (payload.duration) lines.push("Durée souhaitée : " + payload.duration);
+      if (payload.device) lines.push("Appareil : " + payload.device);
+      if (payload.name) lines.push("Nom : " + payload.name);
+      if (payload.note) lines.push("Note : " + payload.note);
+      lines.push("Merci 🙏");
+      return lines.join("\\n");
     }
+
+    function waLinkFromText(text){
+      // wa.me format: https://wa.me/<number>?text=<encoded>
+      const encoded = encodeURIComponent(text);
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encoded;
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        return true;
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      }
+    }
+
+    // ====== YEAR ======
+    $("#year").textContent = new Date().getFullYear();
+
+    // ====== REVEAL ON SCROLL ======
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    $$(".reveal").forEach(el=>io.observe(el));
+
+    // ====== MODAL (FIXED: opens ONLY via buttons) ======
+    const modal = $("#modal");
+    const closeBtn = $("#closeModal");
+    const backdrop = $("#backdrop");
+    let lastFocus = null;
+
+    function openModal(prefillPlan=""){
+      lastFocus = document.activeElement;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      // prefill plan if provided
+      const planInput = $("#plan");
+      if(prefillPlan) planInput.value = prefillPlan;
+
+      // focus first useful field
+      setTimeout(()=>{
+        const device = $("#device");
+        device.focus();
+      }, 30);
+
+      // lock background scroll
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    }
+
     function closeModal(){
       modal.classList.remove("is-open");
-      document.documentElement.classList.remove("modal-open");
-      document.body.classList.remove("modal-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      if(lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
     }
 
-    // ESC ferme
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    // OFFRES -> ouvre modal + pré-sélectionne la durée
-    document.querySelectorAll("[data-plan]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const plan = btn.getAttribute("data-plan");
-        if (plan && durationSelect) durationSelect.value = plan;
-        openModal();
+    // IMPORTANT: no global click that opens modal.
+    // Only buttons with [data-open-modal] open it.
+    $("[data-open-modal]")?.addEventListener?.("click", ()=>openModal(""));
+    $$("[data-open-modal]").forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        openModal("");
       });
     });
 
-    // Envoi WhatsApp
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-
-      const name = (fd.get("name") || "").toString().trim() || "Client";
-      const device = (fd.get("device") || "").toString().trim();
-      const duration = (fd.get("duration") || "Essai 24h").toString().trim();
-      const note = (fd.get("note") || "").toString().trim();
-
-      if (!device) {
-        alert("Veuillez choisir votre appareil.");
-        return;
-      }
-
-      const msg = [
-        "Bonjour 👋",
-        "Je souhaite un ESSAI ✅",
-        "",
-        `Nom : ${name}`,
-        `Appareil : ${device}`,
-        `Durée : ${duration}`,
-        note ? `Note : ${note}` : null
-      ].filter(Boolean).join("\\n");
-
-      window.location.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+    closeBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
     });
 
-    // Dots (slider)
-    const slider = document.getElementById("offersSlider");
-    const dots = Array.from(document.querySelectorAll("#dots .dot2"));
+    // ====== OFFERS: pick buttons open modal with plan prefilled ======
+    $$(".pick").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const plan = btn.getAttribute("data-plan") || "";
+        openModal(plan);
+      });
+    });
+
+    // ====== Slider dots ======
+    const track = $("#offerTrack");
+    const dots = $$("#dots .dot2");
+
     function updateDots(){
-      const max = slider.scrollWidth - slider.clientWidth;
-      const p = max > 0 ? slider.scrollLeft / max : 0;
-      const idx = Math.min(dots.length - 1, Math.round(p * (dots.length - 1)));
-      dots.forEach((d,i)=> d.classList.toggle("on", i === idx));
+      const cards = $$(".offer", track);
+      const scrollLeft = track.scrollLeft;
+      // Find nearest card
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      cards.forEach((c, idx)=>{
+        const dist = Math.abs(c.offsetLeft - scrollLeft);
+        if(dist < bestDist){ bestDist = dist; bestIdx = idx; }
+      });
+      dots.forEach((d,i)=>d.classList.toggle("is-on", i===bestIdx));
     }
-    slider.addEventListener("scroll", () => requestAnimationFrame(updateDots), {passive:true});
+    track.addEventListener("scroll", ()=>{
+      window.requestAnimationFrame(updateDots);
+    });
     updateDots();
 
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ====== Copy quick message buttons ======
+    $("#copyMsg").addEventListener("click", async ()=>{
+      const text = buildMessage({
+        name:"",
+        device:"(à préciser)",
+        duration:"Essai 24h",
+        plan:"12 mois - 249 DH",
+        note:""
+      });
+      const ok = await copyText(text);
+      $("#copyMsg").textContent = ok ? "Copié ✓" : "Copier le message";
+      setTimeout(()=> $("#copyMsg").textContent = "Copier le message", 1200);
+    });
+
+    // ====== Form submit => WhatsApp ======
+    const form = $("#leadForm");
+    form.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const payload = {
+        name: $("#name").value.trim(),
+        device: $("#device").value.trim(),
+        duration: $("#duration").value.trim(),
+        plan: $("#plan").value.trim(),
+        note: $("#note").value.trim()
+      };
+      const text = buildMessage(payload);
+      const url = waLinkFromText(text);
+      window.location.href = url;
+    });
+
+    $("#copyFormMsg").addEventListener("click", async ()=>{
+      const payload = {
+        name: $("#name").value.trim(),
+        device: $("#device").value.trim() || "(à préciser)",
+        duration: $("#duration").value.trim(),
+        plan: $("#plan").value.trim(),
+        note: $("#note").value.trim()
+      };
+      const text = buildMessage(payload);
+      const ok = await copyText(text);
+      $("#copyFormMsg").textContent = ok ? "Copié ✓" : "Copier le message";
+      setTimeout(()=> $("#copyFormMsg").textContent = "Copier le message", 1200);
+    });
   </script>
 </body>
 </html>
