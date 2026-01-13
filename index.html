@@ -11,6 +11,7 @@
     :root{
       --bg:#060807;
       --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
       --border: rgba(255,255,255,.12);
       --muted: rgba(255,255,255,.68);
       --text:#ffffff;
@@ -18,6 +19,7 @@
       --g2:#0bcf8c;
       --shadow: 0 40px 90px rgba(0,0,0,.75);
       --radius: 22px;
+      --radius2: 16px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -32,7 +34,7 @@
       overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1040px; margin:0 auto; padding: 18px 16px 60px}
+    .wrap{max-width:1080px; margin:0 auto; padding: 18px 16px 60px}
 
     /* Top bar */
     .topbar{
@@ -43,31 +45,26 @@
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
     .topbar__inner{
-      max-width:1040px; margin:0 auto; padding:12px 16px;
+      max-width:1080px; margin:0 auto; padding:12px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      letter-spacing:.3px;
-      font-weight:650;
-    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:780; letter-spacing:.3px}
     .dot{
       width:14px; height:14px; border-radius:6px;
       background: linear-gradient(135deg, var(--g1), var(--g2));
       box-shadow: 0 10px 25px rgba(24,243,163,.18);
     }
-    .brand b{color: #bfffe9}
-    .nav{
-      display:flex; gap:12px; align-items:center;
-    }
+    .brand b{color:#bfffe9}
+    .nav{display:flex; gap:10px; align-items:center}
+
     .chip{
       padding:10px 14px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.06);
       border-radius:999px;
-      font-weight:600;
-      color: rgba(255,255,255,.9);
-      transition:.2s transform ease, .2s background ease;
+      font-weight:700;
+      color: rgba(255,255,255,.92);
+      transition:.18s transform ease, .18s background ease;
       user-select:none;
     }
     .chip:active{transform:scale(.98)}
@@ -76,13 +73,14 @@
       background: linear-gradient(135deg, var(--g1), var(--g2));
       color:#00110a;
       box-shadow: 0 18px 40px rgba(11,207,140,.22);
+      cursor:pointer;
     }
 
     /* Hero */
-    .hero{padding-top:26px}
+    .hero{padding-top:22px}
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.25fr .75fr;
       gap:16px;
       align-items:stretch;
     }
@@ -94,10 +92,11 @@
     }
     .heroMain{padding:26px}
     .eyebrow{
-      display:inline-flex; gap:10px; align-items:center;
-      font-size:.9rem;
+      display:flex; gap:10px; align-items:center;
+      font-size:.92rem;
       color: var(--muted);
       margin:0 0 10px;
+      flex-wrap:wrap;
     }
     .badge{
       padding:6px 10px;
@@ -105,14 +104,14 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.85);
-      font-weight:650;
+      font-weight:800;
       font-size:.82rem;
     }
     h1{
       margin:0 0 8px;
-      font-size: clamp(30px, 3.8vw, 52px);
+      font-size: clamp(30px, 3.6vw, 54px);
       line-height:1.05;
-      letter-spacing:-.8px;
+      letter-spacing:-.9px;
     }
     .sub{
       margin:0 0 14px;
@@ -122,10 +121,11 @@
     .lead{
       margin:0 0 18px;
       color: var(--muted);
-      line-height:1.55;
+      line-height:1.6;
       font-size:1rem;
-      max-width: 52ch;
+      max-width: 60ch;
     }
+
     .actions{display:flex; gap:12px; flex-wrap:wrap}
     .btn{
       border-radius:999px;
@@ -133,11 +133,11 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
       color: rgba(255,255,255,.92);
-      font-weight:700;
+      font-weight:800;
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
       cursor:pointer;
-      transition: .22s transform ease, .22s box-shadow ease, .22s background ease;
+      transition: .18s transform ease, .18s box-shadow ease, .18s background ease;
       -webkit-tap-highlight-color: transparent;
       user-select:none;
     }
@@ -152,23 +152,20 @@
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top:18px;
     }
-    .meta .pill{
+    .pill{
       padding:10px 12px;
       border-radius: 999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.80);
-      font-weight:650;
+      font-weight:800;
       font-size:.9rem;
     }
 
     /* Side */
     .heroSide{padding:18px}
-    .sideTitle{
-      font-weight:750; letter-spacing:.2px;
-      margin:0 0 8px;
-    }
-    .sideSmall{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .sideTitle{font-weight:900; margin:0 0 8px}
+    .sideSmall{margin:0 0 14px; color:var(--muted); line-height:1.55}
     .priceRow{
       display:flex; align-items:baseline; justify-content:space-between;
       padding:14px 14px;
@@ -177,68 +174,139 @@
       border:1px solid rgba(255,255,255,.10);
       margin: 10px 0 12px;
     }
-    .priceRow strong{font-size: 1.6rem}
-    .sideNote{
-      margin:0 0 14px; color:rgba(255,255,255,.75); line-height:1.55
-    }
-    .sideFooter{
-      color: rgba(255,255,255,.75);
-      font-weight:650;
-      font-size:.92rem;
-      display:flex; gap:8px; align-items:center;
-    }
-    .tick{
-      width:18px; height:18px; border-radius:6px;
-      background: rgba(24,243,163,.16);
-      display:inline-flex; align-items:center; justify-content:center;
-      border:1px solid rgba(24,243,163,.24);
-    }
+    .priceRow strong{font-size: 1.7rem}
+    .sideNote{margin:0 0 14px; color:rgba(255,255,255,.75); line-height:1.55}
+    .sideFooter{margin-top:14px; color: rgba(255,255,255,.75); font-weight:800; font-size:.92rem; display:flex; gap:8px; align-items:center}
+    .tick{width:18px; height:18px; border-radius:6px; background: rgba(24,243,163,.16); display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(24,243,163,.24)}
 
     /* Sections */
     .section{margin-top:26px}
-    .sectionHead{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
-      margin: 0 0 12px;
-    }
-    h2{margin:0; font-size: 1.5rem}
+    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin:0 0 12px}
+    h2{margin:0; font-size: 1.55rem; letter-spacing:-.2px}
     .muted{color:var(--muted); margin:0}
-    .offers{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-    }
-    .offer{
-      padding:16px;
+    .anchor{scroll-margin-top:90px}
+
+    /* OFFERS SLIDER */
+    .offersWrap{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
       border-radius: var(--radius);
+      padding: 14px;
+      overflow:hidden;
+    }
+    .offersSlider{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding: 6px 2px 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .offersSlider::-webkit-scrollbar{height:8px}
+    .offersSlider::-webkit-scrollbar-thumb{background: rgba(255,255,255,.14); border-radius:999px}
+    .offerCard{
+      scroll-snap-align: start;
+      flex: 0 0 min(320px, 85%);
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding:16px;
       position:relative;
-      overflow:hidden;
-      transform: translateY(0);
-      transition: .22s transform ease, .22s background ease;
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
     }
-    .offer:active{transform: scale(.99)}
-    .offer--best{
+    .offerCard--best{
       border-color: rgba(24,243,163,.35);
-      background: linear-gradient(180deg, rgba(24,243,163,.08), rgba(255,255,255,.05));
+      background: linear-gradient(180deg, rgba(24,243,163,.10), rgba(255,255,255,.05));
     }
     .tag{
       position:absolute; top:12px; right:12px;
       padding:6px 10px; border-radius:999px;
       background: rgba(24,243,163,.18);
       border: 1px solid rgba(24,243,163,.30);
-      font-weight:800; font-size:.8rem;
+      font-weight:900; font-size:.78rem;
     }
-    .offer h3{margin:0 0 10px; font-size:1.05rem}
-    .price{
-      font-size: 1.9rem;
-      font-weight:900;
+    .offerTop{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+    .offerName{margin:0; font-weight:900; font-size:1.1rem}
+    .offerDesc{margin:8px 0 14px; color: rgba(255,255,255,.72); line-height:1.5}
+    .bigPrice{
+      font-weight:950;
+      font-size: 2.1rem;
       letter-spacing:-.4px;
-      margin: 0 0 6px;
+      margin: 8px 0 2px;
     }
-    .price span{font-size: .95rem; color: rgba(255,255,255,.75); font-weight:750}
-    .offer p{margin:0 0 12px}
-    .offer .btn{width:100%}
+    .bigPrice span{font-size:.95rem; color: rgba(255,255,255,.75); font-weight:850}
+    .offerCTA{display:flex; gap:10px; margin-top:12px}
+    .offerCTA .btn{width:100%}
+
+    .hintRow{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin-top:10px;
+      color: rgba(255,255,255,.7);
+      font-weight:750;
+      font-size:.9rem;
+    }
+    .dots{display:flex; gap:6px; opacity:.9}
+    .dot2{width:6px; height:6px; border-radius:999px; background: rgba(255,255,255,.28)}
+    .dot2.on{background: rgba(24,243,163,.65)}
+
+    /* Process */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .step{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding:16px;
+    }
+    .n{
+      width:38px; height:38px; border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-weight:950;
+      background: rgba(24,243,163,.14);
+      border:1px solid rgba(24,243,163,.22);
+      margin-bottom:10px;
+    }
+    .t{font-weight:900; margin:0 0 6px}
+    .p{margin:0; color: rgba(255,255,255,.72); line-height:1.5}
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      gap:10px;
+    }
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color: rgba(255,255,255,.72); line-height:1.55}
+
+    /* CTA */
+    .cta{
+      margin-top:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(24,243,163,.10), rgba(255,255,255,.05));
+      border-radius: var(--radius);
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .cta b{font-weight:950}
+    .cta .btn{min-width: 220px}
 
     /* Footer */
     footer{
@@ -252,11 +320,20 @@
       gap:12px;
       flex-wrap:wrap;
     }
-    .links{display:flex; gap:14px; font-weight:700; color: rgba(255,255,255,.78)}
+    .links{display:flex; gap:14px; font-weight:850; color: rgba(255,255,255,.78)}
 
-    /* Modal */
-    .modal{position:fixed; inset:0; z-index:999; display:none; padding:16px;}
-    .modal.is-open{display:flex; align-items:center; justify-content:center;}
+    /* MODAL (IMPORTANT: hidden by default) */
+    .modal{
+      position:fixed; inset:0;
+      z-index:999;
+      display:none;          /* ✅ default hidden */
+      padding:16px;
+    }
+    .modal.is-open{
+      display:flex;          /* ✅ only visible when open */
+      align-items:center;
+      justify-content:center;
+    }
     .backdrop{
       position:absolute; inset:0;
       background: rgba(0,0,0,.65);
@@ -274,10 +351,10 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 20px;
-      animation: pop .34s cubic-bezier(.2,.9,.2,1) both;
+      animation: pop .28s cubic-bezier(.2,.9,.2,1) both;
     }
     @keyframes pop{
-      from{transform: translateY(20px) scale(.96); opacity:0}
+      from{transform: translateY(18px) scale(.97); opacity:0}
       to{transform: translateY(0) scale(1); opacity:1}
     }
     .close{
@@ -290,7 +367,7 @@
       font-size:18px;
       cursor:pointer;
     }
-    .formTitle{margin:6px 0 6px; font-size:1.35rem; font-weight:900}
+    .formTitle{margin:6px 0 6px; font-size:1.35rem; font-weight:950}
     .formDesc{margin:0 0 14px; color: rgba(255,255,255,.70); line-height:1.5}
     form{display:grid; grid-template-columns: 1fr; gap:12px}
     input, select, textarea{
@@ -304,14 +381,14 @@
       outline:none;
     }
     input::placeholder, textarea::placeholder{color: rgba(255,255,255,.5)}
-    textarea{min-height:80px; resize:none}
+    textarea{min-height:82px; resize:none}
     .submit{
       padding: 16px 18px;
       border-radius: 999px;
       border:none;
       background: linear-gradient(135deg, var(--g1), var(--g2));
       color:#00110a;
-      font-weight:900;
+      font-weight:950;
       font-size: 1rem;
       box-shadow: 0 18px 40px rgba(11,207,140,.22);
       cursor:pointer;
@@ -323,13 +400,9 @@
     /* Mobile */
     @media (max-width: 920px){
       .heroGrid{grid-template-columns: 1fr}
-      .offers{grid-template-columns: 1fr 1fr}
-      .topbar__inner{gap:8px}
+      .steps{grid-template-columns: 1fr}
       .nav{gap:8px}
       .chip{padding:10px 12px}
-    }
-    @media (max-width: 520px){
-      .offers{grid-template-columns: 1fr}
     }
   </style>
 </head>
@@ -343,12 +416,13 @@
       </div>
       <div class="nav">
         <a class="chip" href="https://instagram.com/plutonshopma" target="_blank" rel="noopener">Instagram</a>
-        <button class="chip chip--primary" id="openModalTop" type="button">Je suis intéressé</button>
+        <button class="chip chip--primary" data-open-modal type="button">Je suis intéressé</button>
       </div>
     </div>
   </div>
 
   <div class="wrap">
+    <!-- HERO -->
     <section class="hero">
       <div class="heroGrid">
         <div class="card heroMain">
@@ -365,7 +439,7 @@
           </p>
 
           <div class="actions">
-            <button class="btn btn--primary" id="openModalHero" type="button">Demander un essai</button>
+            <button class="btn btn--primary" data-open-modal type="button">Demander un essai</button>
             <a class="btn" href="#offres">Voir les offres</a>
           </div>
 
@@ -387,9 +461,9 @@
 
           <p class="sideNote">Vous pouvez commencer par <b>1 mois</b> si vous préférez tester.</p>
 
-          <button class="btn btn--primary" id="openModalSide" type="button" style="width:100%">TEST 24H</button>
+          <button class="btn btn--primary" data-open-modal type="button" style="width:100%">TEST 24H</button>
 
-          <div class="sideFooter" style="margin-top:14px">
+          <div class="sideFooter">
             <span class="tick">✓</span>
             <span>Test avant paiement</span>
           </div>
@@ -397,41 +471,132 @@
       </div>
     </section>
 
-    <section id="offres" class="section">
+    <!-- OFFRES (SLIDER) -->
+    <section id="offres" class="section anchor">
       <div class="sectionHead">
         <h2>Offres</h2>
-        <p class="muted">Choisissez votre durée.</p>
+        <p class="muted">Faites glisser → pour voir les prix.</p>
       </div>
 
-      <div class="offers">
-        <article class="offer">
-          <h3>1 mois</h3>
-          <div class="price">39 <span>DH</span></div>
-          <p class="muted">Idéal pour commencer</p>
-          <button class="btn" type="button" data-plan="1 mois - 39 DH">Choisir</button>
-        </article>
+      <div class="offersWrap">
+        <div class="offersSlider" id="offersSlider" aria-label="Offres (carousel)">
+          <article class="offerCard">
+            <div class="offerTop">
+              <h3 class="offerName">1 mois</h3>
+            </div>
+            <div class="bigPrice">39 <span>DH</span></div>
+            <p class="offerDesc">Idéal pour commencer et tester tranquillement.</p>
+            <div class="offerCTA">
+              <button class="btn" type="button" data-plan="1 mois">Choisir</button>
+            </div>
+          </article>
 
-        <article class="offer">
-          <h3>3 mois</h3>
-          <div class="price">99 <span>DH</span></div>
-          <p class="muted">Meilleur compromis</p>
-          <button class="btn" type="button" data-plan="3 mois - 99 DH">Choisir</button>
-        </article>
+          <article class="offerCard">
+            <div class="offerTop">
+              <h3 class="offerName">3 mois</h3>
+            </div>
+            <div class="bigPrice">99 <span>DH</span></div>
+            <p class="offerDesc">Le meilleur compromis pour la plupart des clients.</p>
+            <div class="offerCTA">
+              <button class="btn" type="button" data-plan="3 mois">Choisir</button>
+            </div>
+          </article>
 
-        <article class="offer">
-          <h3>6 mois</h3>
-          <div class="price">149 <span>DH</span></div>
-          <p class="muted">Pour être tranquille</p>
-          <button class="btn" type="button" data-plan="6 mois - 149 DH">Choisir</button>
-        </article>
+          <article class="offerCard">
+            <div class="offerTop">
+              <h3 class="offerName">6 mois</h3>
+            </div>
+            <div class="bigPrice">149 <span>DH</span></div>
+            <p class="offerDesc">Pour être tranquille et profiter sans stress.</p>
+            <div class="offerCTA">
+              <button class="btn" type="button" data-plan="6 mois">Choisir</button>
+            </div>
+          </article>
 
-        <article class="offer offer--best">
-          <span class="tag">TOP</span>
-          <h3>12 mois</h3>
-          <div class="price">249 <span>DH</span></div>
-          <p class="muted">Meilleure valeur</p>
-          <button class="btn btn--primary" type="button" data-plan="12 mois - 249 DH">Choisir</button>
-        </article>
+          <article class="offerCard offerCard--best">
+            <span class="tag">TOP</span>
+            <div class="offerTop">
+              <h3 class="offerName">12 mois</h3>
+            </div>
+            <div class="bigPrice">249 <span>DH</span></div>
+            <p class="offerDesc">La meilleure valeur. Recommandé.</p>
+            <div class="offerCTA">
+              <button class="btn btn--primary" type="button" data-plan="12 mois">Choisir</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="hintRow">
+          <span>Glissez pour comparer</span>
+          <div class="dots" id="dots">
+            <span class="dot2 on"></span><span class="dot2"></span><span class="dot2"></span><span class="dot2"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <div>
+          <div style="font-weight:950;font-size:1.05rem">Prêt à tester ?</div>
+          <div class="muted">Remplissez le formulaire et on vous guide selon votre appareil.</div>
+        </div>
+        <button class="btn btn--primary" data-open-modal type="button">Demander un essai</button>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section anchor">
+      <div class="sectionHead">
+        <h2>Process</h2>
+        <p class="muted">Simple, rapide, guidé.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <p class="t">Vous demandez un essai</p>
+          <p class="p">Vous indiquez votre appareil (TV / Android / iPhone / PC).</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <p class="t">On vous guide</p>
+          <p class="p">Étapes courtes, adaptées à votre cas (message/vocal).</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <p class="t">Activation</p>
+          <p class="p">Si tout est OK, activation immédiate selon l’offre choisie.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section anchor">
+      <div class="sectionHead">
+        <h2>FAQ</h2>
+        <p class="muted">Réponses rapides.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>L’essai est-il vraiment gratuit ?</summary>
+          <p>Oui. Vous testez, puis vous décidez. Aucun paiement avant validation.</p>
+        </details>
+        <details>
+          <summary>Combien de temps pour activer ?</summary>
+          <p>En général 5–10 minutes après confirmation, selon l’appareil.</p>
+        </details>
+        <details>
+          <summary>Je ne suis pas à l’aise avec l’installation</summary>
+          <p>Pas de souci : on vous guide étape par étape.</p>
+        </details>
+      </div>
+
+      <div class="cta">
+        <div>
+          <div style="font-weight:950;font-size:1.05rem">Besoin d’aide maintenant ?</div>
+          <div class="muted">Cliquez et envoyez votre demande en 10 secondes.</div>
+        </div>
+        <button class="btn btn--primary" data-open-modal type="button">Je suis intéressé</button>
       </div>
     </section>
 
@@ -439,23 +604,25 @@
       <div>© <span id="year"></span> Pluton Shop</div>
       <div class="links">
         <a href="#offres">Offres</a>
-        <a href="#" id="openModalFooter">Essai</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
       </div>
     </footer>
   </div>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div class="modal" id="modal">
-    <div class="backdrop" id="closeBackdrop"></div>
+    <div class="backdrop" data-close-modal></div>
 
     <div class="dialog" role="dialog" aria-modal="true" aria-label="Demande d'essai">
-      <button class="close" id="closeBtn" type="button">✕</button>
+      <button class="close" type="button" data-close-modal>✕</button>
 
       <div class="formTitle">Demande d’essai</div>
       <p class="formDesc">Dites-nous juste l’essentiel. Le message sera préparé automatiquement.</p>
 
       <form id="trialForm">
         <input name="name" placeholder="Nom (optionnel)" autocomplete="name" />
+
         <select name="device" required>
           <option value="">Votre appareil</option>
           <option>Android TV</option>
@@ -464,13 +631,15 @@
           <option>iPhone</option>
           <option>PC</option>
         </select>
-        <select name="duration">
+
+        <select name="duration" id="duration">
           <option>Essai 24h</option>
           <option>1 mois</option>
           <option>3 mois</option>
           <option>6 mois</option>
           <option>12 mois</option>
         </select>
+
         <textarea name="note" placeholder="Note (optionnel) — ex : je veux surtout sports / films…"></textarea>
 
         <button class="submit" type="submit">Envoyer sur WhatsApp</button>
@@ -481,65 +650,55 @@
   </div>
 
   <script>
-    // IMPORTANT: Mets ton numéro ici (sans +)
+    // ⚠️ Mets ton numéro ici sans +
     const PHONE = "212772649507";
 
     const modal = document.getElementById("modal");
-    const openButtons = [
-      document.getElementById("openModalTop"),
-      document.getElementById("openModalHero"),
-      document.getElementById("openModalSide"),
-      document.getElementById("openModalFooter"),
-    ];
-
-    const closeBtn = document.getElementById("closeBtn");
-    const closeBackdrop = document.getElementById("closeBackdrop");
     const form = document.getElementById("trialForm");
+    const durationSelect = document.getElementById("duration");
 
-    let selectedPlan = "";
+    // ✅ OUVRIR SEULEMENT via boutons dédiés
+    document.querySelectorAll("[data-open-modal]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
 
-    function openModal() {
+    // ✅ FERMER SEULEMENT via close/backdrop
+    document.querySelectorAll("[data-close-modal]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeModal();
+      });
+    });
+
+    function openModal(){
       modal.classList.add("is-open");
       document.documentElement.classList.add("modal-open");
       document.body.classList.add("modal-open");
     }
-
-    function closeModal() {
+    function closeModal(){
       modal.classList.remove("is-open");
       document.documentElement.classList.remove("modal-open");
       document.body.classList.remove("modal-open");
     }
 
-    openButtons.forEach(b => b && b.addEventListener("click", (e) => {
-      e.preventDefault();
-      openModal();
-    }));
-
-    closeBtn.addEventListener("click", closeModal);
-    closeBackdrop.addEventListener("click", closeModal);
-
-    // Close on ESC
+    // ESC ferme
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeModal();
     });
 
-    // Offers -> open modal + prefill duration
+    // OFFRES -> ouvre modal + pré-sélectionne la durée
     document.querySelectorAll("[data-plan]").forEach(btn => {
       btn.addEventListener("click", () => {
-        selectedPlan = btn.getAttribute("data-plan") || "";
+        const plan = btn.getAttribute("data-plan");
+        if (plan && durationSelect) durationSelect.value = plan;
         openModal();
-        // prefill duration if matches
-        const durationSelect = form.querySelector('select[name="duration"]');
-        if (durationSelect && selectedPlan) {
-          const match = selectedPlan.split(" - ")[0].trim();
-          [...durationSelect.options].forEach(o => {
-            if (o.text.trim() === match) durationSelect.value = o.text.trim();
-          });
-        }
       });
     });
 
-    // Submit -> WhatsApp message
+    // Envoi WhatsApp
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const fd = new FormData(form);
@@ -561,13 +720,23 @@
         `Nom : ${name}`,
         `Appareil : ${device}`,
         `Durée : ${duration}`,
-        note ? `Note : ${note}` : null,
-        selectedPlan ? `Offre choisie : ${selectedPlan}` : null
-      ].filter(Boolean).join("\n");
+        note ? `Note : ${note}` : null
+      ].filter(Boolean).join("\\n");
 
-      const url = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
-      window.location.href = url;
+      window.location.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
     });
+
+    // Dots (slider)
+    const slider = document.getElementById("offersSlider");
+    const dots = Array.from(document.querySelectorAll("#dots .dot2"));
+    function updateDots(){
+      const max = slider.scrollWidth - slider.clientWidth;
+      const p = max > 0 ? slider.scrollLeft / max : 0;
+      const idx = Math.min(dots.length - 1, Math.round(p * (dots.length - 1)));
+      dots.forEach((d,i)=> d.classList.toggle("on", i === idx));
+    }
+    slider.addEventListener("scroll", () => requestAnimationFrame(updateDots), {passive:true});
+    updateDots();
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
